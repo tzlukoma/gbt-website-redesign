@@ -1,14 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-
-function HomePage () {
-  return (
-
-
-    <h1 >This is the main page for me and you</h1>  
-
-  )
-  
+function HomePage() {
+	return (
+		<>
+			<h1>Live Life By Design.</h1>
+			<h1>Not By Default.</h1>
+		</>)
 }
-
-export default HomePage
+export default HomePage;

@@ -31,10 +31,9 @@ export default function Nav() {
 		setMenuOpen(!menuOpen);
 	}
 
-	console.log(menuOpen);
 
 	return (
-		<header className="text-white lg:px-5 px-6 bg-primary-500 flex flex-wrap items-center fixed w-full z-50 transition-all duration-200">
+		<header className="text-white lg:px-20 px-6 lg:py-0 py-2 bg-primary-500 flex flex-wrap items-center fixed w-full z-50 transition-all duration-200">
 			<div className="flex items-center justify-between flex-1">
 				<Link to="/">
 					<img className="w-36" src="/logo.svg" />
@@ -44,14 +43,20 @@ export default function Nav() {
 				htmlFor="menu-toggle"
 				className="block pointer-cursor lg:hidden"
 				onClick={handleMenuClick}>
+				{/* heroicons.com - menu */}
 				<svg
-					className="text-white fill-current"
 					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 20 20">
-					<title>menu</title>
-					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+					fill="none"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					stroke="currentColor">
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						d="M4 6h16M4 12h16M4 18h16"
+					/>
 				</svg>
 			</button>
 			<div
@@ -66,7 +71,8 @@ export default function Nav() {
 							return (
 								<li>
 									<Link
-										className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:text-secondary-500 hover:border-secondary-300 transition-all duration-200"
+										className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:text-secondary-300 hover:border-secondary-300 transition-all duration-200"
+										activeClassName="text-secondary-500"
 										to={link.link}>
 										{link.name}
 									</Link>
