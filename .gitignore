@@ -1,4 +1,6 @@
+node_modules/
 .vscode
 sample-data
-sanity.json
+gbt-import
 .env
+.cache
