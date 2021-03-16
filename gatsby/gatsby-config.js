@@ -15,6 +15,9 @@ export default {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       // this is the name of the plugin you are adding
       resolve: 'gatsby-source-sanity',
@@ -38,6 +41,14 @@ export default {
           }
         }
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `localAssets`,
+        path: `${__dirname}/src/local-assets/`
+      }
+    },
+
   ]
 }

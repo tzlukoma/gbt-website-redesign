@@ -3,4 +3,5 @@ node_modules/
 sample-data
 gbt-import
 .env
-.cache
+.cache/
+static/
