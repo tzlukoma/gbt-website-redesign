@@ -15,7 +15,7 @@ export default {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-postcss',
-    'gatsby-plugin-image',
+    'gatsby-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -48,7 +48,6 @@ export default {
         name: `localAssets`,
         path: `${__dirname}/src/local-assets/`
       }
-    },
-
+    }
   ]
 }
