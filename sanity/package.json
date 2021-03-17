@@ -10,13 +10,9 @@
     "lint": "eslint .",
     "start": "sanity start"
   },
-  "keywords": [
-    "sanity"
-  ],
+  "keywords": ["sanity"],
   "eslintConfig": {
-    "extends": [
-      "wesbos"
-    ]
+    "extends": ["wesbos"]
   },
   "dependencies": {
     "dotenv": "^8.2.0",
