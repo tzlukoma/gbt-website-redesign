@@ -8,7 +8,7 @@ function HomePage ({
   }
 }) {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-4 bg-light-500 max-h-full'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-5 sm:p-8 lg:px-20 bg-light-500 max-h-full'>
       <div className='row-start-2 md:row-start-1 max-h-70 '>
         <div className='flex flex-col justify-center px-10 2xl:pt-12 2xl:pb-5 pt-6 xl:h-1/2 bg-light-100 '>
           <h1 className='text-4xl lg:text-5xl 2xl:text-7xl'>
