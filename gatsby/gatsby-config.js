@@ -53,12 +53,12 @@ export default {
     //     url: `https://api.georgebthompson.com/graphql`,
     //   },
     // },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `localAssets`,
-        path: `${__dirname}/src/local-assets/`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `localAssets`,
+    //     path: `${__dirname}/src/local-assets/`,
+    //   },
+    // },
   ],
 };
