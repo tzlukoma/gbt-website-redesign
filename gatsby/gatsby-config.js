@@ -15,6 +15,7 @@ export default {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
     'gatsby-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
@@ -31,15 +32,25 @@ export default {
     {
       resolve: `gatsby-source-rss-feed`,
       options: {
-        url: `https://anchor.fm/s/1d1e03bc/podcast/rss`,
-        name: `BKRPodcast`,
+        url: `https://anchor.fm/s/1d9f3590/podcast/rss`,
+        name: `S4LPodcast`,
         // Optional
         // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
         parserOption: {
           customFields: {
-            item: ['itunes:duration']
+            item: ['itunes:duration', 'itunes:episode']
           }
         }
+      }
+    },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        /*
+         * The full URL of the WordPress site's GraphQL API.
+         * Example : 'https://www.example-site.com/graphql'
+         */
+        url: `https://api.georgebthompson.com/graphql`
       }
     },
     {

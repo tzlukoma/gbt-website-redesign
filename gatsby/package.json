@@ -15,7 +15,9 @@
     "prebuild": "netlify-lambda install"
   },
   "eslintConfig": {
-    "extends": ["wesbos"],
+    "extends": [
+      "wesbos"
+    ],
     "rules": {
       "react/prop-types": 0
     }
@@ -31,7 +33,9 @@
     "gatsby-plugin-styled-components": "^4.0.0",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-source-rss-feed": "^1.2.2",
-    "gatsby-source-sanity": "^6.0.4",
+    "gatsby-source-sanity": "^7.0.0",
+    "gatsby-source-wordpress": "^5.1.0",
+    "gatsby-transformer-sharp": "^3.1.0",
     "isomorphic-fetch": "^3.0.0",
     "netlify-cli": "^3.10.6",
     "netlify-lambda": "^2.0.3",
@@ -47,7 +51,7 @@
     "cross-env": "^7.0.2",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-config-wesbos": "^1.0.1",
     "eslint-plugin-html": "^6.1.2",
     "eslint-plugin-import": "^2.22.1",
