@@ -1,4 +1,4 @@
-import { FaShareAlt as icon } from 'react-icons/fa'
+import { FaShareAlt as icon } from 'react-icons/fa';
 
 export default {
   title: 'Platform',
@@ -9,7 +9,7 @@ export default {
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
     },
 
     // add a unique slug field for queries, permalinks etc
@@ -20,13 +20,18 @@ export default {
       options: {
         // auto generates a slug from the title field
         source: 'name',
-        auto: true
-      }
+        auto: true,
+      },
+    },
+    {
+      title: 'Platform Image',
+      name: 'platformImage',
+      type: 'image',
     },
     {
       title: 'Social Media',
       name: 'isSocialMedia',
-      type: 'boolean'
-    }
-  ]
-}
+      type: 'boolean',
+    },
+  ],
+};

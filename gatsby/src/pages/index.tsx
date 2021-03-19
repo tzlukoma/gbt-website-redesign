@@ -12,7 +12,7 @@ function HomePage({
   const testPosts = [
     {
       title: 'Black History Makers - Freedom Riders (Part 2)',
-      platform: 'Mummy Needs a Break YouTube Channel',
+      platform: 'Mommy Needs a Break YouTube Channel',
       date: 'March 3, 2021',
       embed: 'https://www.youtube.com/embed/uoEifCrjX4I?start=2564',
       avatar:
@@ -120,7 +120,7 @@ function HomePage({
                         <i className='fa fa-heart'></i>
                       </a>
                     </div>
-                    <div className="col-start-3 mt-5 text-grey-darker text-sm text-right">{testPosts[0].date}</div>
+                    <div className="col-start-3 mt-3 text-grey-darker text-sm text-right">{testPosts[0].date}</div>
 
                   </div>
 
