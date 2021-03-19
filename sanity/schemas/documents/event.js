@@ -1,4 +1,4 @@
-import { FaRegCalendarAlt as icon } from 'react-icons/fa'
+import { FaRegCalendarAlt as icon } from 'react-icons/fa';
 
 export default {
   title: 'Event',
@@ -9,43 +9,43 @@ export default {
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Synopsis',
       name: 'synopsis',
 
-      type: 'blockContent'
+      type: 'blockContent',
     },
     {
       title: 'Video Link',
       name: 'videoUrl',
-      type: 'url'
+      type: 'url',
     },
     {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
       options: {
-        source: 'title'
-      }
+        source: 'title',
+      },
     },
     {
       title: 'Host(s)',
       name: 'host',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'person' }] }]
+      of: [{ type: 'reference', to: [{ type: 'person' }] }],
     },
     {
       title: 'Guests',
       name: 'guest',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'person' }] }]
+      of: [{ type: 'reference', to: [{ type: 'person' }] }],
     },
     {
       title: 'Date',
       name: 'date',
-      type: 'datetime'
+      type: 'datetime',
     },
     {
       title: 'Status',
@@ -56,34 +56,40 @@ export default {
           { title: 'Planning', value: 'planning' },
           { title: 'Scheduled', value: 'scheduled' },
           { title: 'Aired', value: 'aired' },
-          { title: 'Reuse', value: 'reuse' }
-        ]
-      }
+          { title: 'Reuse', value: 'reuse' },
+        ],
+      },
     },
     {
       title: 'Published Formats',
       name: 'format',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'format' }] }]
+      of: [{ type: 'reference', to: [{ type: 'format' }] }],
     },
     {
       title: 'Event Thumbnail',
       name: 'thumbnail',
       type: 'image',
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
-      title: 'Platforms',
-      name: 'platform',
+      title: 'Publish Platform',
+      name: 'publishPlatform',
+      type: 'reference',
+      to: [{ type: 'platform' }],
+    },
+    {
+      title: 'Distribution Platforms',
+      name: 'distributionPlatform',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [{ type: 'platform' }]
-        }
-      ]
+          to: [{ type: 'platform' }],
+        },
+      ],
     },
     {
       title: 'Tags',
@@ -92,9 +98,9 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'topic' }, { type: 'framework' }]
-        }
-      ]
-    }
-  ]
-}
+          to: [{ type: 'topic' }, { type: 'framework' }],
+        },
+      ],
+    },
+  ],
+};
