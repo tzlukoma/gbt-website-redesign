@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config({ path: '.env' });
 
-export default {
+module.exports = {
   pathPrefix: '/',
   siteMetadata: {
     title: `George B. Thompson`,
