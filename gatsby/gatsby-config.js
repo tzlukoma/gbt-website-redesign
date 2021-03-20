@@ -7,7 +7,7 @@ export default {
   pathPrefix: '/',
   siteMetadata: {
     title: `George B. Thompson`,
-    siteUrl: 'https://georgebthompson.com',
+    siteUrl: 'https://awesome-pasteur-d0d080.netlify.app',
     description: 'Live your life by design.',
     twitter: '@georgebthompson',
   },
