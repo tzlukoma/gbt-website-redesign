@@ -26,7 +26,7 @@ module.exports = {
         projectId: process.env.SANITY_PROJECT_ID,
         dataset: 'production',
         watchMode: true,
-        token: process.env.SANITY_TOKEN,
+        // token: process.env.SANITY_TOKEN,
       },
     },
     {

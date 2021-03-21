@@ -77,9 +77,9 @@ export default function Nav() {
       >
         <nav>
           <ul className="items-center justify-between pt-4 text-base lg:flex lg:pt-0">
-            {links.map((link) => {
+            {links.map((link, idx) => {
               return (
-                <li onClick={() => manageMenu()}>
+                <li key={idx} onClick={() => manageMenu()}>
                   <Link
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:text-secondary-300 hover:border-secondary-300 transition-all duration-500"
                     activeClassName="text-secondary-500"
