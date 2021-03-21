@@ -1,14 +1,42 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import dayjs from 'dayjs';
 
+interface Event {
+  node: {
+    id: number,
+    date: string,
+    publishPlatform: {
+      name: string,
+      platformImage: {
+        asset: {
+          fluid: FluidObject
+        }
+      } | null,
+    } | null,
+    slug: {
+      current: string
+    },
+    status: string,
+    thumbnail: {
+      asset: {
+        fluid: FluidObject
+      }
+    } | null,
+    title: string,
+    videoUrl: string | null,
+  }
+}
+
 function HomePage({ data }) {
-  const events = data.allSanityEvent.edges;
+  const events: Event[] = data.allSanityEvent.edges;
   // Sort events by the date they occured; reverse chronologically
-  events.sort(function (a, b) {
-    return new Date(b.node.date) - new Date(a.node.date);
+  events.sort(function (a: any, b: any) {
+    const firstItem: any = new Date(a.node.date)
+    const secondItem: any = new Date(b.node.date)
+    return secondItem - firstItem;
   });
   const siteSettings = data.sanitySiteSettings;
   const airedEvents = events
