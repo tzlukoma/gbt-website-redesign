@@ -29,6 +29,11 @@ export default {
       type: 'image',
     },
     {
+      title: 'Platform Link',
+      name: 'platformUrl',
+      type: 'url',
+    },
+    {
       title: 'Social Media',
       name: 'isSocialMedia',
       type: 'boolean',
