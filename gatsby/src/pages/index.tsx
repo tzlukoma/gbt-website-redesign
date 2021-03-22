@@ -26,6 +26,13 @@ interface Event {
       }
     } | null,
     title: string,
+    synopsis: [{
+      children: [
+        {
+          text: string
+        }
+      ]
+    }],
     videoUrl: string | null,
   }
 }
@@ -46,6 +53,7 @@ function HomePage({ data }) {
   const scheduledEvents = events.filter(
     (event) => event.node.status == 'scheduled',
   );
+  console.log(scheduledEvents)
 
   return (
     <article>
@@ -117,6 +125,36 @@ function HomePage({ data }) {
         </div>
         <div className="-mt-3 p-5 ">
           <h2 className="mt-0 text-2xl text-center">What's Next?</h2>
+          <div className="grid grid-cols-2 gap-1">
+            <div className="flex justify-evenly items-center col-span-1 text-center text-white bg-primary-500">
+              <span className="text-lg ">
+                {dayjs(scheduledEvents[0].node.date).format(
+                  'ddd',
+                )}
+              </span>
+              <span className="text-3xl">
+                {dayjs(scheduledEvents[0].node.date).format(
+                  'DD',
+                )}
+              </span>
+              <span className="text-lg">
+                {dayjs(scheduledEvents[0].node.date).format(
+                  'MMM',
+                )}
+              </span>
+            </div>
+            <div className=" col-span-1 p-3 text-xl text-center text-white bg-primary-500">
+              {`${dayjs(scheduledEvents[0].node.date).format(
+                'h:mm a',
+              )} PST`}
+            </div>
+            <div className="col-span-2 p-4 bg-light-200">
+              <div className="text-xl ">{scheduledEvents[0].node.title}</div>
+              <div className="text-md ">{scheduledEvents[0].node.synopsis[0].children[0].text}</div>
+            </div>
+
+
+          </div>
         </div>
       </div>
       {/* --Visible on mobile-- END */}
@@ -241,8 +279,28 @@ function HomePage({ data }) {
               );
             })}
           </ul>
-          <div className="">
-            <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
+
+        </div>
+        <div className=" md:px-8 lg:px-20">
+          <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
+          <div className="grid grid-cols-9 gap-2 pt-5">
+            <div className="col-span-1 p-2 text-center text-white bg-primary-500">
+              <div className="text-lg ">
+                Tue
+              </div>
+              <div className="text-4xl">
+                06
+              </div>
+              <div className="text-lg">
+                Apr
+              </div>
+              <div className="mt-2 text-lg">
+                7:00 PM PST
+              </div>
+            </div>
+            <div className="col-span-3 text-2xl p-5 bg-light-200">The State of the Union / Markets Update</div>
+            <div className="col-span-3 text-md p-5 bg-light-200">George examines the current economic climate and gives us a market update.</div>
+            <div className="col-span-2 text-md p-5 bg-light-200"> [icon] FCBC on Facebook</div>
           </div>
         </div>
       </div>
@@ -259,6 +317,11 @@ export const query = graphql`
         node {
           id
           title
+          synopsis {
+            children {
+              text
+            }
+          }
           thumbnail {
             asset {
               fluid(maxWidth: 700) {
