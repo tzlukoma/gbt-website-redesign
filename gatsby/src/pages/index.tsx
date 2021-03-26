@@ -178,30 +178,6 @@ function HomePage({ data }) {
               </h2>
             </div>
             <SubscriptionForm />
-            {/* 
-            <div className="flex justify-evenly">
-              <form className="w-full">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/3 text-xl"
-                />
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/3 text-xl"
-                />
-                <button
-                  type="submit"
-                  className="text-white bg-primary-500 font-serif mt-0 py-3 px-6 text-xl w-full xl:w-1/4"
-                >
-                  Sign Up
-                </button>
-              </form>
-            </div>
-           */}
           </div>
           <div className="row-start-1 md:h-full">
             <Img
