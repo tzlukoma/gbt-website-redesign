@@ -49,6 +49,7 @@ export default function Nav() {
       <button
         htmlFor="menu-toggle"
         className="block pointer-cursor lg:hidden"
+        id="openMenu"
         onClick={handleMenuClick}
       >
         {/* heroicons.com - menu */}

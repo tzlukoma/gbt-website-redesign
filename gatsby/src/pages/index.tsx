@@ -202,7 +202,7 @@ function HomePage({ data }) {
           <div className="row-start-1 md:h-full">
             <Img
               fluid={siteSettings.heroImage.asset.fluid}
-              className="h-full"
+              className="h-full hero-image"
             />
           </div>
         </div>

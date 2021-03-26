@@ -1,0 +1,28 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "eslint-config-prettier",
+      "plugin:react/recommended",
+      "airbnb",
+      "prettier",
+      "prettier/react",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "react/state-in-constructor": "off"
+    },
+    "env": {
+      "browser": true
+    },
+    "plugins": ["react", "prettier", "@typescript-eslint"]
+  }
+}
