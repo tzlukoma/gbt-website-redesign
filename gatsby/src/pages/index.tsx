@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import { graphql } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import dayjs from 'dayjs';
+import SubscriptionForm from '../components/SubscriptionForm';
 
 interface Event {
   node: {
@@ -176,6 +177,8 @@ function HomePage({ data }) {
                 Sign up and get the first 3 chapters of The Wealth Cycle FREE
               </h2>
             </div>
+            <SubscriptionForm />
+            {/* 
             <div className="flex justify-evenly">
               <form className="w-full">
                 <input
@@ -198,6 +201,7 @@ function HomePage({ data }) {
                 </button>
               </form>
             </div>
+           */}
           </div>
           <div className="row-start-1 md:h-full">
             <Img
