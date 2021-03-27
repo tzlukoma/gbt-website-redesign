@@ -16,15 +16,21 @@ function SubscriptionForm() {
           method="post"
           onSubmit={handleSubmit(onSubmit)}
         >
+          <label id="first_name" className="text-xl mr-5">
+            Name
+          </label>
           <input
             type="text"
             aria-label="Your name"
             name="first_name"
             ref={register({ required: 'Name is required' })}
-            placeholder="Name"
-            className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/3 text-xl"
+            placeholder="Enter your name"
+            data-testid="name"
+            className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/4 text-md"
           />
-
+          <label id="email" className="text-xl mr-5">
+            Email
+          </label>
           <input
             type="text"
             aria-label="Your email address"
@@ -36,8 +42,9 @@ function SubscriptionForm() {
                 message: 'Please enter a valid email address',
               },
             })}
-            placeholder="Email"
-            className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/3 text-xl"
+            placeholder="Enter your email address"
+            data-testid="email"
+            className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/4 text-md"
           />
 
           <button
@@ -48,7 +55,7 @@ function SubscriptionForm() {
           </button>
         </form>
       </div>
-      <div className="flex">
+      <div className="flex md:inline-block mt-5">
         {errors.first_name && (
           <div className="mb-5 mr-5  text-red-600 ">
             {errors.first_name.message}
