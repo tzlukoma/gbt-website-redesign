@@ -11,11 +11,12 @@
     "start": "npm run develop",
     "serve": "cross-env NODE_OPTIONS=\"-r esm\" gatsby serve",
     "clean": "gatsby clean",
-    "cy:open": "cypress open --config-file cypress.dev.json",
+    "cy:open": "cypress open",
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
+    "classnames": "^2.2.6",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "gatsby": "^3.0.3",

@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 import { graphql } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import dayjs from 'dayjs';
-import SubscriptionForm from '../components/SubscriptionForm';
+import SignUpForm from '../components/SignUpForm';
 
 interface Event {
   node: {
@@ -161,7 +161,7 @@ function HomePage({ data }) {
       {/* --Visible on mobile-- END */}
       {/* ---Always visible-- START */}
       <div className="block">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-8 lg:px-20 bg-light-500 max-h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-8 lg:px-20 xl:pt-12 2xl:pt-14 2xl:pb-0 bg-light-500 max-h-full">
           <div className="row-start-2 md:row-start-1 max-h-70 ">
             <div className="flex flex-col justify-center px-10 2xl:pt-12 2xl:pb-5 pt-6 xl:h-1/2 bg-light-100 ">
               <h1 className="text-4xl lg:text-5xl 2xl:text-7xl">
@@ -173,16 +173,17 @@ function HomePage({ data }) {
               </h1>
             </div>
             <div>
-              <h2 className="my-2 xl:my-4 2xl:my-6 p-1 text-xl xl:text-3xl 2xl:text-4xl leading-relaxed text-gray-600 ">
+              {/* <h2 className="my-2 xl:my-4 2xl:my-6 p-1 text-xl xl:text-3xl 2xl:text-4xl leading-relaxed text-gray-600 ">
                 Sign up and get the first 3 chapters of The Wealth Cycle FREE
-              </h2>
+              </h2> */}
+              <SignUpForm title="Sign up and get the first 3 chapters of The Wealth Cycle FREE" />
             </div>
-            <SubscriptionForm />
+
           </div>
           <div className="row-start-1 md:h-full">
             <Img
               fluid={siteSettings.heroImage.asset.fluid}
-              className="h-full hero-image"
+              className="h-full 2xl:h-5/6 hero-image"
             />
           </div>
         </div>
