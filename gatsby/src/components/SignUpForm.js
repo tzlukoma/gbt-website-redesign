@@ -99,6 +99,7 @@ function SignUpForm({ title }) {
               placeholder="Enter your email address"
               disabled={mutation.isLoading}
               aria-label="Email address"
+              data-testid="email"
             />
             <button
               type="submit"

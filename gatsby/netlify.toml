@@ -1,5 +1,11 @@
 [build]
+    command = "npm run build"
     functions = "functions/"
+    publish = "public"
+
+[[plugins]]
+    package = "netlify-plugin-cypress"
+    
 [[redirects]]
     from = "/api/*"
     to = "/.netlify/functions/:splat"
