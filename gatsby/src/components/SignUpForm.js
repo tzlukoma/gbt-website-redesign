@@ -15,9 +15,19 @@ const SuccessMessage = () => (
 );
 
 function SignUpForm({ title }) {
-  const { register, handleSubmit, watch, errors, reset } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    fetch('/api/subscribe', {
+      method: 'post',
+      body: JSON.stringify(data),
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // console.log(data);
     reset();
   };
   console.log(errors);
