@@ -37,8 +37,6 @@ export default function Nav() {
     } else return;
   }
 
-  console.log(menuOpen);
-
   return (
     <header className="text-white lg:px-20 px-6 lg:py-0 py-2 bg-primary-500 flex flex-wrap items-center fixed w-full z-50 transition-all duration-200">
       <div className="flex items-center justify-between flex-1">

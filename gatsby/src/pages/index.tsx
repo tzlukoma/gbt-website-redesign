@@ -54,7 +54,6 @@ function HomePage({ data }) {
   const scheduledEvents = events.filter(
     (event) => event.node.status == 'scheduled',
   );
-  console.log(scheduledEvents)
 
   return (
     <article>
