@@ -41,6 +41,7 @@
     "react-hook-form": "^6.15.5",
     "react-is": "^17.0.1",
     "react-player": "^2.9.0",
+    "react-query": "^3.13.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
