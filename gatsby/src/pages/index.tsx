@@ -1,14 +1,53 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import dayjs from 'dayjs';
+import SignUpForm from '../components/SignUpForm';
+import { displayLocalTimeZone } from '../utils/timeFormats';
+
+interface Event {
+  node: {
+    id: number,
+    date: string,
+    publishPlatform: {
+      name: string,
+      platformImage: {
+        asset: {
+          fluid: FluidObject
+        }
+      } | null,
+    } | null,
+    slug: {
+      current: string
+    },
+    status: string,
+    thumbnail: {
+      asset: {
+        fluid: FluidObject
+      }
+    } | null,
+    title: string,
+    synopsis: [{
+      children: [
+        {
+          text: string
+        }
+      ]
+    }],
+    videoUrl: string | null,
+  }
+}
+
 
 function HomePage({ data }) {
-  const events = data.allSanityEvent.edges;
+  const events: Event[] = data.allSanityEvent.edges;
+
   // Sort events by the date they occured; reverse chronologically
-  events.sort(function (a, b) {
-    return new Date(b.node.date) - new Date(a.node.date);
+  events.sort(function (a: any, b: any) {
+    const firstItem: any = new Date(a.node.date)
+    const secondItem: any = new Date(b.node.date)
+    return secondItem - firstItem;
   });
   const siteSettings = data.sanitySiteSettings;
   const airedEvents = events
@@ -77,9 +116,7 @@ function HomePage({ data }) {
                       </a>
                     </div>
                     <div className="col-start-3 mt-3 text-grey-darker text-sm text-right">
-                      {dayjs(mobileAiredEvents[0].node.date).format(
-                        'MMMM DD, YYYY',
-                      )}
+                      {displayLocalTimeZone(mobileAiredEvents[0].node.date, 'MMMM DD, YYYY')}
                     </div>
                   </div>
                 </div>
@@ -89,12 +126,35 @@ function HomePage({ data }) {
         </div>
         <div className="-mt-3 p-5 ">
           <h2 className="mt-0 text-2xl text-center">What's Next?</h2>
+          <div className="grid grid-cols-2 gap-1">
+            <div className="flex justify-evenly items-center col-span-1 text-center text-white bg-primary-500">
+              <span className="text-lg ">
+                {displayLocalTimeZone(scheduledEvents[0].node.date, 'ddd')}
+              </span>
+              <span className="text-3xl">
+
+                {displayLocalTimeZone(scheduledEvents[0].node.date, 'DD')}
+              </span>
+              <span className="text-lg">
+                {displayLocalTimeZone(scheduledEvents[0].node.date, "MMM")}
+              </span>
+            </div>
+            <div className=" col-span-1 p-3 text-xl text-center text-white bg-primary-500">
+              {displayLocalTimeZone(scheduledEvents[0].node.date, 'h:mm a')}
+            </div>
+            <div className="col-span-2 p-4 bg-light-200">
+              <div className="text-xl ">{scheduledEvents[0].node.title}</div>
+
+            </div>
+
+
+          </div>
         </div>
       </div>
       {/* --Visible on mobile-- END */}
       {/* ---Always visible-- START */}
       <div className="block">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-8 lg:px-20 bg-light-500 max-h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-8 lg:px-20 xl:pt-12 2xl:pt-14 2xl:pb-0 bg-light-500 max-h-full">
           <div className="row-start-2 md:row-start-1 max-h-70 ">
             <div className="flex flex-col justify-center px-10 2xl:pt-12 2xl:pb-5 pt-6 xl:h-1/2 bg-light-100 ">
               <h1 className="text-4xl lg:text-5xl 2xl:text-7xl">
@@ -106,37 +166,17 @@ function HomePage({ data }) {
               </h1>
             </div>
             <div>
-              <h2 className="my-2 xl:my-4 2xl:my-6 p-1 text-xl xl:text-3xl 2xl:text-4xl leading-relaxed text-gray-600 ">
+              {/* <h2 className="my-2 xl:my-4 2xl:my-6 p-1 text-xl xl:text-3xl 2xl:text-4xl leading-relaxed text-gray-600 ">
                 Sign up and get the first 3 chapters of The Wealth Cycle FREE
-              </h2>
+              </h2> */}
+              <SignUpForm title="Sign up and get the first 3 chapters of The Wealth Cycle FREE" />
             </div>
-            <div className="flex justify-evenly">
-              <form className="w-full">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/3 text-xl"
-                />
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  className="mr-5 mb-3 p-3 bg-white text-gray-800 w-full xl:w-1/3 text-xl"
-                />
-                <button
-                  type="submit"
-                  className="text-white bg-primary-500 font-serif mt-0 py-3 px-6 text-xl w-full xl:w-1/4"
-                >
-                  Sign Up
-                </button>
-              </form>
-            </div>
+
           </div>
           <div className="row-start-1 md:h-full">
             <Img
               fluid={siteSettings.heroImage.asset.fluid}
-              className="h-full"
+              className="h-full 2xl:h-5/6 hero-image"
             />
           </div>
         </div>
@@ -204,7 +244,7 @@ function HomePage({ data }) {
                           </a>
                         </div>
                         <div className="col-start-3 mt-3 text-grey-darker text-sm xl:text-md 2xl:text-lg text-right">
-                          {dayjs(date).format('MMMM DD, YYYY')}
+                          {displayLocalTimeZone(date, 'MMMM DD, YYYY')}
                         </div>
                       </div>
                     </div>
@@ -213,8 +253,28 @@ function HomePage({ data }) {
               );
             })}
           </ul>
-          <div className="">
-            <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
+
+        </div>
+        <div className=" md:px-8 lg:px-20">
+          <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
+          <div className="grid grid-cols-9 gap-2 pt-5">
+            <div className="col-span-1 p-2 text-center text-white bg-primary-500">
+              <div className="text-lg ">
+                Tue
+              </div>
+              <div className="text-4xl">
+                06
+              </div>
+              <div className="text-lg">
+                Apr
+              </div>
+              <div className="mt-2 text-lg">
+                7:00 PM PST
+              </div>
+            </div>
+            <div className="col-span-3 text-2xl p-5 bg-light-200">The State of the Union / Markets Update</div>
+            <div className="col-span-3 text-md p-5 bg-light-200">George examines the current economic climate and gives us a market update.</div>
+            <div className="col-span-2 text-md p-5 bg-light-200"> [icon] FCBC on Facebook</div>
           </div>
         </div>
       </div>
@@ -231,6 +291,11 @@ export const query = graphql`
         node {
           id
           title
+          synopsis {
+            children {
+              text
+            }
+          }
           thumbnail {
             asset {
               fluid(maxWidth: 700) {
