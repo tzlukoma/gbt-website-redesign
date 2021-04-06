@@ -6,6 +6,7 @@ export interface Event {
     date: string,
     publishPlatform: {
       name: string,
+      platformUrl,
       platformImage: {
         asset: {
           fluid: FluidObject
@@ -29,6 +30,7 @@ export interface Event {
         }
       ]
     }],
+    registerUrl: string | null,
     videoUrl: string | null,
   }
 }

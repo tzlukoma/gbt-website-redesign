@@ -37,23 +37,24 @@ function videos({ data }) {
                                             id,
                                             date,
                                             publishPlatform,
+                                            thumbnail,
                                             slug,
                                             title,
                                             videoUrl,
                                         } = event.node;
                                         return (
-
                                             <li>
                                                 <article className="mb-3 overflow-hidden shadow-lg">
                                                     <div className="relative h-0 pb-fluid-video">
+
                                                         <a
-                                                            href={event.node.videoUrl}
+                                                            href={videoUrl}
                                                             className="absolute top-0 left-0 w-full h-full"
                                                         >
                                                             <div className="relative">
                                                                 <Img
                                                                     className="absolute z-0 top-0 left-0 w-full h-full"
-                                                                    fluid={event.node.thumbnail.asset.fluid}
+                                                                    fluid={thumbnail.asset.fluid}
                                                                 />
                                                                 <div className="h-full w-full absolute z-10 inset-0  bg-black opacity-40 text-white">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -68,14 +69,15 @@ function videos({ data }) {
                                                             </div>
 
                                                         </a>
+
                                                     </div>
                                                     <div className="p-3">
                                                         <h3 className="-mt-1 text-left">
                                                             <a
                                                                 className="no-underline hover:underline text-black text-sm "
-                                                                href={event.node.videoUrl || '#'}
+                                                                href={videoUrl || '#'}
                                                             >
-                                                                {event.node.title}
+                                                                {title}
                                                             </a>
                                                         </h3>
                                                         <div className="grid grid-cols-3 p-3 -mt-3 bg-light-100">
@@ -85,11 +87,11 @@ function videos({ data }) {
                                                                     href={'#' || `https://georgebthompson.com`}
                                                                 >
                                                                     {/* TODO Add publish platform url */}
-                                                                    {event.node.publishPlatform
+                                                                    {publishPlatform
                                                                         .platformImage ? (
                                                                         <Img
                                                                             fluid={
-                                                                                event.node.publishPlatform
+                                                                                publishPlatform
                                                                                     .platformImage.asset.fluid
                                                                             }
                                                                             className="block rounded-full h-8 w-8"
@@ -102,12 +104,12 @@ function videos({ data }) {
                                                                         />
                                                                     )}
                                                                     <p className="m-3 text-sm xl:text-md 2xl:text-lg">
-                                                                        {event.node.publishPlatform.name}
+                                                                        {publishPlatform.name}
                                                                     </p>
                                                                 </a>
                                                             </div>
                                                             <div className="col-start-3 mt-3 text-grey-darker text-sm text-right">
-                                                                {displayLocalTimeZone(event.node.date, 'MMM DD, YYYY')}
+                                                                {displayLocalTimeZone(date, 'MMM DD, YYYY')}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -127,9 +129,7 @@ function videos({ data }) {
                     {/* ---NOT Visible on mobile devices--- START */}
                     <div className="hidden md:block">
                         <div className=" md:px-8 lg:px-20">
-                            <div className="flex">
-                                <h2 className="mt-10 mb-2 text-4xl ">What Did I Miss? </h2><div className="mt-12 mb-0 px-5 text-base"><Link to="/archive/videos/">view all</Link></div>
-                            </div>
+
 
                             <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5 py-5">
                                 {airedEvents.map((event) => {
@@ -199,28 +199,6 @@ function videos({ data }) {
                                 })}
                             </ul>
 
-                        </div>
-                        <div className=" md:px-8 lg:px-20">
-                            <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
-                            <div className="grid grid-cols-9 gap-2 pt-5">
-                                <div className="col-span-1 p-2 text-center text-white bg-primary-500">
-                                    <div className="text-lg ">
-                                        Tue
-              </div>
-                                    <div className="text-4xl">
-                                        06
-              </div>
-                                    <div className="text-lg">
-                                        Apr
-              </div>
-                                    <div className="mt-2 text-lg">
-                                        7:00 PM PST
-              </div>
-                                </div>
-                                <div className="col-span-3 text-2xl p-5 bg-light-200">The State of the Union / Markets Update</div>
-                                <div className="col-span-3 text-md p-5 bg-light-200">George examines the current economic climate and gives us a market update.</div>
-                                <div className="col-span-2 text-md p-5 bg-light-200"> [icon] FCBC on Facebook</div>
-                            </div>
                         </div>
                     </div>
                     {/* ---Not Visible on mobile devices--- END */}

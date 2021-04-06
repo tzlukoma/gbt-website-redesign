@@ -71,7 +71,7 @@ function SignUpForm({ title }) {
   });
 
   const btnClass = classNames({
-    'flex-shrink-0 bg-primary-500 hover:bg-primary-600 border-primary-500 hover:border-primary-600 lg:text-lg border-4 text-white py-1 px-5 lg:px-10': true,
+    'flex-shrink-0 bg-primary-500 hover:bg-primary-600 border-primary-500 rounded hover:border-primary-600 lg:text-lg border-4 text-white py-1 px-5 lg:px-10': true,
     'opacity-50 cursor-not-allowed': mutation.isLoading,
   });
 

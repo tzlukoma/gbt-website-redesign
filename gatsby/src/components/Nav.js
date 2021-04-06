@@ -13,13 +13,17 @@ export default function Nav() {
       name: 'Schedule',
       link: '/schedule',
     },
+    // {
+    //   name: 'Learn',
+    //   link: '/learn',
+    // },
+    // {
+    //   name: 'Books',
+    //   link: '/books',
+    // },
     {
-      name: 'Learn',
-      link: '/learn',
-    },
-    {
-      name: 'Books',
-      link: '/books',
+      name: 'Videos',
+      link: '/archive/videos',
     },
     {
       name: 'About',

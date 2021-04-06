@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import SignUpForm from '../components/SignUpForm';
 import { Event } from "../interfaces/Event"
 import { displayLocalTimeZone } from '../utils/timeFormats';
+import EventCard from '../components/EventCard';
 
 
 function HomePage({ data }) {
@@ -18,7 +19,7 @@ function HomePage({ data }) {
   });
   const scheduledEvents = ascEvents.filter(
     (event) => event.node.status == 'scheduled',
-  );
+  ).slice(0, 3);
   // Sort events reverse chronologically
   const descEvents = events.sort(function (a: any, b: any) {
     const firstItem: any = new Date(a.node.date)
@@ -39,7 +40,10 @@ function HomePage({ data }) {
       <div className="md:hidden">
         <div className="-mt-2 p-5 max-w-6xl mx-auto">
           <div className="flex">
-            <h2 className="mt-0 mb-1 text-2xl text-center">What Did I Miss?</h2> <div className="mt-0 mb-0 px-5 text-base text-secondary-500 underline"><Link to="/archive/videos/">view all</Link></div>
+            <h2 className="mt-0 mb-1 text-2xl text-center">What Did I Miss?</h2>
+            <div className="mt-0 mb-0 px-5 text-base text-secondary-500 underline">
+              <Link to="/archive/videos/">view all</Link>
+            </div>
           </div>
 
           <ul className="grid grid-cols-1 -mt-3 pt-5">
@@ -61,8 +65,8 @@ function HomePage({ data }) {
                           width="24"
                           className="m-auto mt-20"
                           stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
                     </div>
@@ -117,30 +121,15 @@ function HomePage({ data }) {
           </ul>
         </div>
         <div className="-mt-3 p-5 ">
-          <h2 className="mt-0 text-2xl text-center">What's Next?</h2>
-          <div className="grid grid-cols-2 gap-1">
-            <div className="flex justify-evenly items-center col-span-1 text-center text-white bg-primary-500">
-              <span className="text-lg ">
-                {displayLocalTimeZone(scheduledEvents[0].node.date, 'ddd')}
-              </span>
-              <span className="text-3xl">
-
-                {displayLocalTimeZone(scheduledEvents[0].node.date, 'DD')}
-              </span>
-              <span className="text-lg">
-                {displayLocalTimeZone(scheduledEvents[0].node.date, "MMM")}
-              </span>
+          {/* <h2 className="mt-0 text-2xl text-center">What's Next?</h2> */}
+          <div className="flex mb-2">
+            <h2 className="mt-0 mb-1 text-2xl text-center">What's Next</h2>
+            <div className="mt-0 mb-0 px-5 text-base text-secondary-500 underline">
+              <Link to="/schedule/">view all events</Link>
             </div>
-            <div className=" col-span-1 p-3 text-xl text-center text-white bg-primary-500">
-              {displayLocalTimeZone(scheduledEvents[0].node.date, 'h:mm a')}
-            </div>
-            <div className="col-span-2 p-4 bg-light-200">
-              <div className="text-xl ">{scheduledEvents[0].node.title}</div>
-
-            </div>
-
-
           </div>
+          <EventCard event={scheduledEvents[0]} />
+
         </div>
       </div>
       {/* --Visible on mobile-- END */}
@@ -175,7 +164,12 @@ function HomePage({ data }) {
       <div className="hidden md:block">
         <div className=" md:px-8 lg:px-20">
           <div className="flex">
-            <h2 className="mt-10 mb-2 text-4xl ">What Did I Miss? </h2><div className="mt-12 mb-0 px-5 text-base text-secondary-500 underline"><Link to="/archive/videos/">view all</Link></div>
+            <h2
+              className="mt-10 mb-2 text-4xl ">What Did I Miss? </h2>
+            <div
+              className="mt-12 mb-0 px-5 text-base text-secondary-500 underline">
+              <Link to="/archive/videos/">view all</Link>
+            </div>
           </div>
 
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5 py-5">
@@ -210,6 +204,7 @@ function HomePage({ data }) {
                         </a>
                       </h3>
                       <div className="grid grid-cols-3 p-3 -mt-3 bg-light-100">
+
                         <div className="col-start-1 col-span-2">
                           <a
                             className="flex items-center no-underline hover:underline text-black"
@@ -235,6 +230,7 @@ function HomePage({ data }) {
                             </p>
                           </a>
                         </div>
+
                         <div className="col-start-3 mt-3 text-grey-darker text-sm xl:text-md 2xl:text-lg text-right">
                           {displayLocalTimeZone(date, 'MMM DD, YYYY')}
                         </div>
@@ -249,25 +245,12 @@ function HomePage({ data }) {
         </div>
         <div className=" md:px-8 lg:px-20">
           <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
-          <div className="grid grid-cols-9 gap-2 pt-5">
-            <div className="col-span-1 p-2 text-center text-white bg-primary-500">
-              <div className="text-lg ">
-                Tue
-              </div>
-              <div className="text-4xl">
-                06
-              </div>
-              <div className="text-lg">
-                Apr
-              </div>
-              <div className="mt-2 text-lg">
-                7:00 PM PST
-              </div>
-            </div>
-            <div className="col-span-3 text-2xl p-5 bg-light-200">The State of the Union / Markets Update</div>
-            <div className="col-span-3 text-md p-5 bg-light-200">George examines the current economic climate and gives us a market update.</div>
-            <div className="col-span-2 text-md p-5 bg-light-200"> [icon] FCBC on Facebook</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+            {scheduledEvents.map(event => {
+              return <EventCard event={event} />
+            })}
           </div>
+
         </div>
       </div>
       {/* ---Not Visible on mobile devices--- END */}
