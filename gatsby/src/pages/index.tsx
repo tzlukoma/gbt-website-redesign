@@ -1,43 +1,10 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { graphql } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
-import dayjs from 'dayjs';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 import SignUpForm from '../components/SignUpForm';
+import { Event } from "../interfaces/Event"
 import { displayLocalTimeZone } from '../utils/timeFormats';
-
-interface Event {
-  node: {
-    id: number,
-    date: string,
-    publishPlatform: {
-      name: string,
-      platformImage: {
-        asset: {
-          fluid: FluidObject
-        }
-      } | null,
-    } | null,
-    slug: {
-      current: string
-    },
-    status: string,
-    thumbnail: {
-      asset: {
-        fluid: FluidObject
-      }
-    } | null,
-    title: string,
-    synopsis: [{
-      children: [
-        {
-          text: string
-        }
-      ]
-    }],
-    videoUrl: string | null,
-  }
-}
 
 
 function HomePage({ data }) {
@@ -60,17 +27,20 @@ function HomePage({ data }) {
   });
 
   const airedEvents = descEvents
-    .filter((event) => event.node.status == 'aired')
-    .slice(0, 2);
+    .filter((event) => event.node.status == 'aired' && event.node.videoUrl !== null)
+    .slice(0, 6);
   const mobileAiredEvents = airedEvents.slice(0, 1);
 
 
   return (
+
     <article>
       {/* --Visible on mobile-- START */}
       <div className="md:hidden">
         <div className="-mt-2 p-5 max-w-6xl mx-auto">
-          <h2 className="mt-0 mb-1 text-2xl text-center">What Did I Miss?</h2>
+          <div className="flex">
+            <h2 className="mt-0 mb-1 text-2xl text-center">What Did I Miss?</h2> <div className="mt-0 mb-0 px-5 text-base text-secondary-500 underline"><Link to="/archive/videos/">view all</Link></div>
+          </div>
 
           <ul className="grid grid-cols-1 -mt-3 pt-5">
             <li>
@@ -80,10 +50,25 @@ function HomePage({ data }) {
                     href={mobileAiredEvents[0].node.videoUrl}
                     className="absolute top-0 left-0 w-full h-full"
                   >
-                    <Img
-                      fluid={mobileAiredEvents[0].node.thumbnail.asset.fluid}
-                    />
+                    <div className="relative">
+                      <Img
+                        className="absolute z-0 top-0 left-0 w-full h-full"
+                        fluid={mobileAiredEvents[0].node.thumbnail.asset.fluid}
+                      />
+                      <div className="h-full w-full absolute z-10 inset-0  bg-black opacity-40 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                          height="24"
+                          width="24"
+                          className="m-auto mt-20"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                    </div>
+
                   </a>
+
                 </div>
                 <div className="p-3">
                   <h3 className="-mt-1 text-md text-left">
@@ -123,7 +108,7 @@ function HomePage({ data }) {
                       </a>
                     </div>
                     <div className="col-start-3 mt-3 text-grey-darker text-sm text-right">
-                      {displayLocalTimeZone(mobileAiredEvents[0].node.date, 'MMMM DD, YYYY')}
+                      {displayLocalTimeZone(mobileAiredEvents[0].node.date, 'MMM DD, YYYY')}
                     </div>
                   </div>
                 </div>
@@ -173,9 +158,6 @@ function HomePage({ data }) {
               </h1>
             </div>
             <div>
-              {/* <h2 className="my-2 xl:my-4 2xl:my-6 p-1 text-xl xl:text-3xl 2xl:text-4xl leading-relaxed text-gray-600 ">
-                Sign up and get the first 3 chapters of The Wealth Cycle FREE
-              </h2> */}
               <SignUpForm title="Sign up and get the first 3 chapters of The Wealth Cycle FREE" />
             </div>
 
@@ -192,8 +174,11 @@ function HomePage({ data }) {
       {/* ---NOT Visible on mobile devices--- START */}
       <div className="hidden md:block">
         <div className=" md:px-8 lg:px-20">
-          <h2 className="mt-10 mb-2 text-4xl ">What Did I Miss?</h2>
-          <ul className="grid grid-cols-2 gap-5 py-5">
+          <div className="flex">
+            <h2 className="mt-10 mb-2 text-4xl ">What Did I Miss? </h2><div className="mt-12 mb-0 px-5 text-base text-secondary-500 underline"><Link to="/archive/videos/">view all</Link></div>
+          </div>
+
+          <ul className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5 py-5">
             {airedEvents.map((event) => {
               const {
                 id,
@@ -218,7 +203,7 @@ function HomePage({ data }) {
                     <div className="p-3 xl:p-5">
                       <h3 className="-mt-1 text-md text-left">
                         <a
-                          className="no-underline hover:underline text-black text-lg xl:text-xl 2xl:text-2xl "
+                          className="no-underline hover:underline  text-black text-xs xl:text-sm 2xl:text-lg "
                           href={videoUrl || '#'}
                         >
                           {title}
@@ -251,7 +236,7 @@ function HomePage({ data }) {
                           </a>
                         </div>
                         <div className="col-start-3 mt-3 text-grey-darker text-sm xl:text-md 2xl:text-lg text-right">
-                          {displayLocalTimeZone(date, 'MMMM DD, YYYY')}
+                          {displayLocalTimeZone(date, 'MMM DD, YYYY')}
                         </div>
                       </div>
                     </div>
@@ -287,12 +272,13 @@ function HomePage({ data }) {
       </div>
       {/* ---Not Visible on mobile devices--- END */}
     </article>
+
   );
 }
 export default HomePage;
 
 export const query = graphql`
-  query MyQuery {
+  query IndexPageQuery {
     allSanityEvent {
       edges {
         node {
