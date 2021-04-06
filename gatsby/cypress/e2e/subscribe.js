@@ -5,7 +5,7 @@ describe('subscription', () => {
   it('should register a new user - mobile', () => {
     cy.viewport(411, 823);
     cy.contains('Sign Up').click();
-    cy.contains('Email address is not required').should('be.visible');
+    cy.contains('Email address is required').should('be.visible');
     cy.get('[data-testid=email]').type('helen');
     cy.contains('Please enter a valid email address').should('be.visible');
     cy.get('[data-testid=email]').type('.smith@example.com');
