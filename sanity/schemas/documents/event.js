@@ -23,6 +23,11 @@ export default {
       type: 'url',
     },
     {
+      title: 'Registration Link',
+      name: 'registerUrl',
+      type: 'url',
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
