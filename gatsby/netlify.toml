@@ -11,6 +11,7 @@
         #call the same commands as we do locally
         start = 'npm run netlify'
         wait-on = 'http://localhost:8888'
+        wait-on-timeout = '45' # seconds
 
 [[redirects]]
     from = "/api/*"
