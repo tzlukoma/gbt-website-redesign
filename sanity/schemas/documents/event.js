@@ -12,6 +12,15 @@ export default {
       type: 'string',
     },
     {
+      title: 'Date',
+      name: 'date',
+      type: 'datetime',
+      options: {
+        dateFormat: 'dddd, DD MMM YYYY,',
+        timeFormat: 'HH:mm a'
+      }
+    },
+    {
       title: 'Synopsis',
       name: 'synopsis',
 
@@ -20,6 +29,11 @@ export default {
     {
       title: 'Video Link',
       name: 'videoUrl',
+      type: 'url',
+    },
+    {
+      title: 'Registration Link',
+      name: 'registerUrl',
       type: 'url',
     },
     {
@@ -42,11 +56,7 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'person' }] }],
     },
-    {
-      title: 'Date',
-      name: 'date',
-      type: 'datetime',
-    },
+
     {
       title: 'Status',
       name: 'status',

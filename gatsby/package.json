@@ -21,6 +21,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
+    "fuse.js": "^6.4.6",
     "gatsby": "^3.0.3",
     "gatsby-image": "^3.0.0",
     "gatsby-plugin-image": "^1.0.1",
