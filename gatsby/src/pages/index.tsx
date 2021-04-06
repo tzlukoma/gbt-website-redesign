@@ -42,21 +42,28 @@ interface Event {
 
 function HomePage({ data }) {
   const events: Event[] = data.allSanityEvent.edges;
-
-  // Sort events by the date they occured; reverse chronologically
-  events.sort(function (a: any, b: any) {
+  const siteSettings = data.sanitySiteSettings;
+  // Sort events chronologically
+  const ascEvents = events.sort(function (a: any, b: any) {
+    const firstItem: any = new Date(a.node.date)
+    const secondItem: any = new Date(b.node.date)
+    return firstItem - secondItem;
+  });
+  const scheduledEvents = ascEvents.filter(
+    (event) => event.node.status == 'scheduled',
+  );
+  // Sort events reverse chronologically
+  const descEvents = events.sort(function (a: any, b: any) {
     const firstItem: any = new Date(a.node.date)
     const secondItem: any = new Date(b.node.date)
     return secondItem - firstItem;
   });
-  const siteSettings = data.sanitySiteSettings;
-  const airedEvents = events
+
+  const airedEvents = descEvents
     .filter((event) => event.node.status == 'aired')
     .slice(0, 2);
   const mobileAiredEvents = airedEvents.slice(0, 1);
-  const scheduledEvents = events.filter(
-    (event) => event.node.status == 'scheduled',
-  );
+
 
   return (
     <article>
