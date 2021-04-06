@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import dayjs from 'dayjs';
 import SignUpForm from '../components/SignUpForm';
+import { displayLocalTimeZone } from '../utils/timeFormats';
 
 interface Event {
   node: {
@@ -38,8 +39,10 @@ interface Event {
   }
 }
 
+
 function HomePage({ data }) {
   const events: Event[] = data.allSanityEvent.edges;
+
   // Sort events by the date they occured; reverse chronologically
   events.sort(function (a: any, b: any) {
     const firstItem: any = new Date(a.node.date)
@@ -113,9 +116,7 @@ function HomePage({ data }) {
                       </a>
                     </div>
                     <div className="col-start-3 mt-3 text-grey-darker text-sm text-right">
-                      {dayjs(mobileAiredEvents[0].node.date).format(
-                        'MMMM DD, YYYY',
-                      )}
+                      {displayLocalTimeZone(mobileAiredEvents[0].node.date, 'MMMM DD, YYYY')}
                     </div>
                   </div>
                 </div>
@@ -128,29 +129,22 @@ function HomePage({ data }) {
           <div className="grid grid-cols-2 gap-1">
             <div className="flex justify-evenly items-center col-span-1 text-center text-white bg-primary-500">
               <span className="text-lg ">
-                {dayjs(scheduledEvents[0].node.date).format(
-                  'ddd',
-                )}
+                {displayLocalTimeZone(scheduledEvents[0].node.date, 'ddd')}
               </span>
               <span className="text-3xl">
-                {dayjs(scheduledEvents[0].node.date).format(
-                  'DD',
-                )}
+
+                {displayLocalTimeZone(scheduledEvents[0].node.date, 'DD')}
               </span>
               <span className="text-lg">
-                {dayjs(scheduledEvents[0].node.date).format(
-                  'MMM',
-                )}
+                {displayLocalTimeZone(scheduledEvents[0].node.date, "MMM")}
               </span>
             </div>
             <div className=" col-span-1 p-3 text-xl text-center text-white bg-primary-500">
-              {`${dayjs(scheduledEvents[0].node.date).format(
-                'h:mm a',
-              )} PST`}
+              {displayLocalTimeZone(scheduledEvents[0].node.date, 'h:mm a')}
             </div>
             <div className="col-span-2 p-4 bg-light-200">
               <div className="text-xl ">{scheduledEvents[0].node.title}</div>
-              <div className="text-md ">{scheduledEvents[0].node.synopsis[0].children[0].text}</div>
+
             </div>
 
 
@@ -250,7 +244,7 @@ function HomePage({ data }) {
                           </a>
                         </div>
                         <div className="col-start-3 mt-3 text-grey-darker text-sm xl:text-md 2xl:text-lg text-right">
-                          {dayjs(date).format('MMMM DD, YYYY')}
+                          {displayLocalTimeZone(date, 'MMMM DD, YYYY')}
                         </div>
                       </div>
                     </div>
