@@ -41,8 +41,8 @@ function HomePage({ data }) {
         <div className="-mt-2 p-5 max-w-6xl mx-auto">
           <div className="flex">
             <h2 className="mt-0 mb-1 text-2xl text-center">What Did I Miss?</h2>
-            <div className="mt-0 mb-0 px-5 text-base text-secondary-500 underline">
-              <Link to="/archive/videos/">view all</Link>
+            <div className="mt-0 mb-0 px-5 text-base text-uppercase text-secondary-500 underline">
+              <Link to="/archive/videos/">VIEW ALL</Link>
             </div>
           </div>
 
@@ -124,8 +124,8 @@ function HomePage({ data }) {
           {/* <h2 className="mt-0 text-2xl text-center">What's Next?</h2> */}
           <div className="flex mb-2">
             <h2 className="mt-0 mb-1 text-2xl text-center">What's Next</h2>
-            <div className="mt-0 mb-0 px-5 text-base text-secondary-500 underline">
-              <Link to="/schedule/">view all events</Link>
+            <div className="mt-0 mb-0 px-5 text-base text-uppercase text-secondary-500 underline">
+              <Link to="/schedule/">ALL EVENTS</Link>
             </div>
           </div>
           <EventCard event={scheduledEvents[0]} />
@@ -167,8 +167,8 @@ function HomePage({ data }) {
             <h2
               className="mt-10 mb-2 text-4xl ">What Did I Miss? </h2>
             <div
-              className="mt-12 mb-0 px-5 text-base text-secondary-500 underline">
-              <Link to="/archive/videos/">view all</Link>
+              className="mt-12 mb-0 px-5 text-base  text-secondary-500 underline">
+              <Link to="/archive/videos/">VIEW ALL</Link>
             </div>
           </div>
 
@@ -245,7 +245,13 @@ function HomePage({ data }) {
 
         </div>
         <div className=" md:px-8 lg:px-20">
-          <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
+          {/* <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2> */}
+          <div className="flex mt-0 mb-2 ">
+            <h2 className="mt-10 mb-2 text-4xl">What's Next</h2>
+            <div className="mt-12 mb-0 px-5 text-base  text-secondary-500 underline">
+              <Link to="/schedule/">ALL EVENTS</Link>
+            </div>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
             {scheduledEvents.map(event => {
               return <EventCard key={event.node.id} event={event} />
