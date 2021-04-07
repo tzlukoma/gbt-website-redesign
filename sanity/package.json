@@ -1,5 +1,5 @@
 {
-  "name": "slicks-slices-backend",
+  "name": "gbt-website-backend",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -19,7 +19,6 @@
     ]
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "@sanity/base": "^2.7.4",
     "@sanity/components": "^2.2.6",
     "@sanity/core": "^2.7.4",
@@ -29,6 +28,7 @@
     "@sanity/google-maps-input": "^2.7.4",
     "@sanity/structure": "^2.7.4",
     "@sanity/vision": "^2.7.4",
+    "dotenv": "^8.2.0",
     "prop-types": "^15.7",
     "react": "^16.13",
     "react-dom": "^16.13",
