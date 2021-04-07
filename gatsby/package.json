@@ -16,6 +16,8 @@
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@tailwindcss/typography": "^0.4.0",
     "@types/jstimezonedetect": "^1.0.3",
     "babel-plugin-styled-components": "^1.11.1",
     "classnames": "^2.2.6",

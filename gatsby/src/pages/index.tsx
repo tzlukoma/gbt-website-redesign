@@ -280,6 +280,7 @@ export const query = graphql`
             }
           }
           videoUrl
+          registerUrl
           publishPlatform {
             name
             platformImage {
