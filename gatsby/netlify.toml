@@ -3,15 +3,6 @@
     functions = "functions/"
     publish = "public"
 
-[[plugins]]
-    package = "netlify-plugin-cypress"
-    # run Cypress tests before building and deploying
-    [plugins.inputs.preBuild]
-        enable = true
-        #call the same commands as we do locally
-        start = 'npm run netlify'
-        wait-on = 'http://localhost:8888'
-
 [[redirects]]
     from = "/api/*"
     to = "/.netlify/functions/:splat"
