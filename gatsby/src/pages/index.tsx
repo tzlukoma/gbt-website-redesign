@@ -188,6 +188,7 @@ function HomePage({ data }) {
                     <div className="relative h-0 pb-fluid-video">
                       <ReactPlayer
                         className="absolute top-0 left-0 w-full h-full"
+                        controls={true}
                         width="100%"
                         height="100%"
                         loading="lazy"
@@ -247,7 +248,7 @@ function HomePage({ data }) {
           <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
             {scheduledEvents.map(event => {
-              return <EventCard event={event} />
+              return <EventCard key={event.node.id} event={event} />
             })}
           </div>
 
