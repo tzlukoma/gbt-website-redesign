@@ -6,7 +6,7 @@ import EventCard from '../components/EventCard'
 
 function SchedulePage({ data }) {
   const [query, updateQuery] = useState('')
-  console.log(data)
+
   const scheduledEvents: Event[] = data.allSanityEvent.edges
   scheduledEvents.sort(function (a: any, b: any) {
     const firstItem: any = new Date(a.node.date)
@@ -25,7 +25,6 @@ function SchedulePage({ data }) {
 
   const results = fuse.search(query)
   const eventResults = query ? results.map(event => event.item) : scheduledEvents
-  console.log(results)
 
   function onSearch({ currentTarget }) {
     updateQuery(currentTarget.value)

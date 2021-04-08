@@ -6,7 +6,6 @@ import { Event } from '../../interfaces/Event'
 import { displayLocalTimeZone } from '../../utils/timeFormats';
 
 function videos({ data }) {
-    console.log(data)
     const events: Event[] = data.allSanityEvent.edges;
 
 
