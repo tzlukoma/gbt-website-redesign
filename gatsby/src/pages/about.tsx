@@ -4,10 +4,9 @@ import Img from 'gatsby-image';
 import BlockContent from '@sanity/block-content-to-react'
 
 function AboutPage({ data }) {
-  console.log(data)
   const image = data.allSanityPost.edges[0].node.mainImage
   const content = data.allSanityPost.edges[0].node._rawBody
-  console.log(content)
+
 
   return (
     <div className="p-8 md:px-8 lg:px-20">
