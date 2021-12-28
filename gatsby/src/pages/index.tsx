@@ -32,6 +32,7 @@ function HomePage({ data }) {
     .slice(0, 6);
   const mobileAiredEvents = airedEvents.slice(0, 1);
 
+  // TODO Remove YouTube title on embed
 
   return (
 
@@ -193,6 +194,11 @@ function HomePage({ data }) {
                         height="100%"
                         loading="lazy"
                         url={videoUrl}
+                        config={{
+                          youtube: {
+                            embedOptions: { modestbranding: 1, autohide: 1, showinfo: 0, controls: 0 }
+                          }
+                        }}
                       />
                     </div>
                     <div className="p-3 xl:p-5">
