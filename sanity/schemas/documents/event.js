@@ -10,6 +10,7 @@ export default {
       title: 'Title',
       name: 'title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Date',
@@ -17,8 +18,9 @@ export default {
       type: 'datetime',
       options: {
         dateFormat: 'dddd, DD MMM YYYY,',
-        timeFormat: 'HH:mm a'
-      }
+        timeFormat: 'HH:mm a',
+      },
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Synopsis',
@@ -43,6 +45,7 @@ export default {
       options: {
         source: 'title',
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Host(s)',
@@ -80,6 +83,7 @@ export default {
       title: 'Event Thumbnail',
       name: 'thumbnail',
       type: 'image',
+      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
       },
@@ -89,6 +93,7 @@ export default {
       name: 'publishPlatform',
       type: 'reference',
       to: [{ type: 'platform' }],
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Distribution Platforms',

@@ -10,6 +10,7 @@ export default {
       title: 'Name',
       name: 'name',
       type: 'string',
+      validation: (Rule) => Rule.required().min(8).max(80),
     },
 
     // add a unique slug field for queries, permalinks etc
