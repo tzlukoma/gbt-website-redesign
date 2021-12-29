@@ -47,13 +47,16 @@ function SchedulePage({ data }) {
       </div>
     </div>
     <h2 className="text-2xl text-center">All Upcoming Events</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {eventResults.map(event => {
-        return (
-          <EventCard key={event?.node?.id} event={event} />
-        )
-      })}
-    </div>
+    {
+      eventResults.length < 1 ? <div className="text-lg text-center">No events scheduled</div> : (<div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {eventResults.map(event => {
+          return (
+            <EventCard key={event?.node?.id} event={event} />
+          )
+        })}
+      </div>)
+    }
+
   </div>
 
 
