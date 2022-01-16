@@ -27,7 +27,7 @@ function EventCard({ event }: Props) {
 
         <a
           className="flex items-center no-underline hover:underline text-black"
-          href={event?.node?.publishPlatform?.platformUrl || `https://georgebthompson.com`}
+          href={event?.node?.publishPlatform?.platformUrl}
         >
 
           {event?.node?.publishPlatform?.platformImage ? (

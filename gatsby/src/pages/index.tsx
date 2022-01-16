@@ -88,9 +88,8 @@ function HomePage({ data }) {
                     <div className="col-start-1 col-span-2">
                       <a
                         className="flex items-center no-underline hover:underline text-black"
-                        href={'#' || `https://georgebthompson.com`}
+                        href={mobileAiredEvents[0].node.publishPlatform?.platformUrl}
                       >
-                        {/* TODO Add publish platform url */}
                         {mobileAiredEvents[0].node.publishPlatform
                           .platformImage ? (
                           <Img
@@ -220,9 +219,8 @@ function HomePage({ data }) {
                         <div className="col-start-1 col-span-2">
                           <a
                             className="flex items-center no-underline hover:underline text-black"
-                            href={'#' || `https://georgebthompson.com`}
+                            href={publishPlatform?.platformUrl}
                           >
-                            {/* TODO Add publish platform url */}
                             {publishPlatform.platformImage ? (
                               <Img
                                 fluid={
@@ -305,7 +303,8 @@ export const query = graphql`
           videoUrl
           registerUrl
           publishPlatform {
-            name
+            name,
+            platformUrl
             platformImage {
               asset {
                 fluid(maxWidth: 200) {
