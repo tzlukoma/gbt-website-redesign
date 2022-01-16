@@ -83,9 +83,8 @@ function videos({ data }) {
                                                             <div className="col-start-1 col-span-2">
                                                                 <a
                                                                     className="flex items-center no-underline hover:underline text-black"
-                                                                    href={'#' || `https://georgebthompson.com`}
+                                                                    href={publishPlatform?.platformUrl}
                                                                 >
-                                                                    {/* TODO Add publish platform url */}
                                                                     {publishPlatform
                                                                         .platformImage ? (
                                                                         <Img
@@ -166,13 +165,12 @@ function videos({ data }) {
                                                         <div className="col-start-1 col-span-2">
                                                             <a
                                                                 className="flex items-center no-underline hover:underline text-black"
-                                                                href={'#' || `https://georgebthompson.com`}
+                                                                href={publishPlatform?.platformUrl}
                                                             >
-                                                                {/* TODO Add publish platform url */}
-                                                                {publishPlatform.platformImage ? (
+                                                                {publishPlatform?.platformImage ? (
                                                                     <Img
                                                                         fluid={
-                                                                            publishPlatform.platformImage.asset.fluid
+                                                                            publishPlatform?.platformImage?.asset?.fluid
                                                                         }
                                                                         className="block rounded-full h-8 w-8"
                                                                     />
@@ -234,6 +232,7 @@ export const query = graphql`
           videoUrl
           publishPlatform {
             name
+            platformUrl
             platformImage {
               asset {
                 fluid(maxWidth: 200) {
