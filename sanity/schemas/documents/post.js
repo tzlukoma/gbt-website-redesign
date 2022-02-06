@@ -1,4 +1,4 @@
-import { FaRegNewspaper as icon } from 'react-icons/fa'
+import { FaRegNewspaper as icon } from 'react-icons/fa';
 
 export default {
   title: 'Post',
@@ -10,7 +10,7 @@ export default {
       title: 'Title',
       name: 'title',
 
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Slug',
@@ -19,14 +19,14 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       title: 'Author',
       name: 'author',
       type: 'reference',
-      to: { type: 'person' }
+      to: { type: 'person' },
     },
     {
       title: 'Main image',
@@ -34,42 +34,41 @@ export default {
 
       type: 'image',
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
       title: 'Categories',
       name: 'category',
-
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'topic' } }]
+      of: [{ type: 'reference', to: { type: 'topic' } }],
     },
     {
       title: 'Published at',
       name: 'publishedAt',
 
-      type: 'datetime'
+      type: 'datetime',
     },
     {
       title: 'Body',
       name: 'body',
 
-      type: 'blockContent'
-    }
+      type: 'blockContent',
+    },
   ],
 
   preview: {
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'mainImage'
+      media: 'mainImage',
     },
-    prepare (selection) {
-      const { author } = selection
+    prepare(selection) {
+      const { author } = selection;
 
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
-      })
-    }
-  }
-}
+        subtitle: author && `by ${author}`,
+      });
+    },
+  },
+};

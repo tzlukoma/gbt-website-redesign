@@ -33,6 +33,7 @@
     "react": "^16.13",
     "react-dom": "^16.13",
     "react-icons": "^3.11.0",
+    "react-player": "^2.9.0",
     "sanity": "^2.2.6",
     "sanity-plugin-content-model-graph": "^1.1.1",
     "styled-components": "^5.2.0"
