@@ -19,7 +19,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
   console.log(data);
   // 3. Loop over each post and create a page for that post
   data.posts.nodes.forEach((post) => {
-    console.log('creating a page for ', post.title);
+    console.log('creating a post page for ', post.title);
     actions.createPage({
       // What is the url for this new page
       path: `${post.slug.current}`,
