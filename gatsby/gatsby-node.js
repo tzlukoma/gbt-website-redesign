@@ -18,20 +18,25 @@ async function turnEventsIntoVideoDetailPages({ graphql, actions }) {
     }
   `);
 
-  // 3. Loop over each post and create a page for that post
-  data.events.nodes
-    .filter((event) => (event.videoUrl = !null))
-    .forEach((event) => {
-      console.log('creating a video detail page for ', event.title);
-      actions.createPage({
-        // What is the url for this new page
-        path: `video/${event.slug.current}`,
-        component: videoTemplate,
-        context: {
-          slug: event.slug.current,
-        },
-      });
+  // 3. Loop over each video event and create a page for that video
+
+  // Filter for just events that have a video
+  const videoEvents = data.events.nodes.filter(
+    (event) => (event.videoUrl = !null),
+  );
+
+  // Loop through and create the pages
+  videoEvents.forEach((event) => {
+    console.log('creating a video detail page for ', event.title);
+    actions.createPage({
+      // What is the url for this new page
+      path: `video/${event.slug.current}`,
+      component: videoTemplate,
+      context: {
+        slug: event.slug.current,
+      },
     });
+  });
 }
 
 async function turnPostsIntoPages({ graphql, actions }) {
