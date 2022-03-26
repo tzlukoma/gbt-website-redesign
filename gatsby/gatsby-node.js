@@ -50,7 +50,6 @@ async function turnPostsIntoPages({ graphql, actions }) {
       }
     }
   `);
-  console.log(data);
   // 3. Loop over each post and create a page for that post
   data.posts.nodes.forEach((post) => {
     console.log('creating a post page for ', post.title);
