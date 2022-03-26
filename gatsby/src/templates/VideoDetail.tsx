@@ -8,7 +8,6 @@ export default function SinglePostPage({ data }) {
   const title = data.event.title
   const synopsis = data.event._rawSynopsis
   const videoUrl = data.event.videoUrl
-  console.log(data)
   return (
     <div className="m-auto sm:1/3 xl:w-1/2 p-8 md:px-8 lg:px-20">
       <h1 className="text-4xl text-center">{title}</h1>
