@@ -10,6 +10,17 @@ export default {
       title: 'Title',
       name: 'title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: 'Date',
+      name: 'date',
+      type: 'datetime',
+      options: {
+        dateFormat: 'dddd, DD MMM YYYY,',
+        timeFormat: 'HH:mm a',
+      },
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Synopsis',
@@ -23,12 +34,18 @@ export default {
       type: 'url',
     },
     {
+      title: 'Registration Link',
+      name: 'registerUrl',
+      type: 'url',
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
       options: {
         source: 'title',
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Host(s)',
@@ -42,11 +59,7 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'person' }] }],
     },
-    {
-      title: 'Date',
-      name: 'date',
-      type: 'datetime',
-    },
+
     {
       title: 'Status',
       name: 'status',
@@ -70,6 +83,7 @@ export default {
       title: 'Event Thumbnail',
       name: 'thumbnail',
       type: 'image',
+      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
       },
@@ -79,6 +93,7 @@ export default {
       name: 'publishPlatform',
       type: 'reference',
       to: [{ type: 'platform' }],
+      validation: (Rule) => Rule.required(),
     },
     {
       title: 'Distribution Platforms',

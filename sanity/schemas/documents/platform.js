@@ -10,6 +10,7 @@ export default {
       title: 'Name',
       name: 'name',
       type: 'string',
+      validation: (Rule) => Rule.required().min(8).max(80),
     },
 
     // add a unique slug field for queries, permalinks etc
@@ -27,6 +28,11 @@ export default {
       title: 'Platform Image',
       name: 'platformImage',
       type: 'image',
+    },
+    {
+      title: 'Platform Link',
+      name: 'platformUrl',
+      type: 'url',
     },
     {
       title: 'Social Media',
