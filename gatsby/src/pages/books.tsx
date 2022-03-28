@@ -4,9 +4,7 @@ import Img from 'gatsby-image';
 import BlockContent from '@sanity/block-content-to-react'
 
 function BookPage({ data }) {
-  console.log(data)
   const books = data.books.edges.sort((a, b) => (a.node.title > b.node.title) ? 1 : -1)
-  console.log(books)
 
   return (
     <div className="m-auto p-8 md:px-8 lg:px-20">
