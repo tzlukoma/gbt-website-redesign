@@ -45,6 +45,33 @@ export default {
       type: 'url',
     },
     {
+      title: 'Publisher',
+      name: 'publisher',
+      type: 'string',
+    },
+    {
+      title: 'Editor (s)',
+      name: 'editor',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'person' }] }],
+    },
+    {
+      title: 'Available In',
+      name: 'availableIn',
+      type: 'string',
+    },
+    {
+      title: 'ISBN',
+      name: 'isbn',
+      type: 'string',
+    },
+    {
+      title: 'Publish Date',
+      name: 'publishDate',
+
+      type: 'datetime',
+    },
+    {
       title: 'Book Image',
       name: 'bookImage',
       type: 'image',
