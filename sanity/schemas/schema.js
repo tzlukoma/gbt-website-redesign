@@ -1,17 +1,18 @@
 // First, we must import the schema creator
-import createSchema from 'part:@sanity/base/schema-creator'
-import schemaTypes from 'all:part:@sanity/base/schema-type'
-import event from './documents/event'
-import post from './documents/post'
-import person from './documents/person'
-import platform from './documents/platform'
-import podcastEpisode from './documents/podcastEpisode'
-import framework from './documents/framework'
-import topic from './documents/topic'
-import format from './documents/format'
-import brand from './documents/brand'
-import blockContent from './documents/blockContent'
-import siteSettings from './documents/siteSettings'
+import createSchema from 'part:@sanity/base/schema-creator';
+import schemaTypes from 'all:part:@sanity/base/schema-type';
+import event from './documents/event';
+import post from './documents/post';
+import person from './documents/person';
+import platform from './documents/platform';
+import podcastEpisode from './documents/podcastEpisode';
+import framework from './documents/framework';
+import topic from './documents/topic';
+import format from './documents/format';
+import brand from './documents/brand';
+import book from './documents/book';
+import blockContent from './documents/blockContent';
+import siteSettings from './documents/siteSettings';
 
 // Then import schema types from any plugins that might expose them
 
@@ -27,12 +28,13 @@ export default createSchema({
     podcastEpisode,
     post,
     person,
+    book,
     platform,
     framework,
     topic,
     format,
     brand,
     blockContent,
-    siteSettings
-  ])
-})
+    siteSettings,
+  ]),
+});

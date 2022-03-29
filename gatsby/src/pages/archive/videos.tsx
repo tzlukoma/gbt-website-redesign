@@ -74,7 +74,7 @@ function videos({ data }) {
                                                         <h3 className="-mt-1 text-left">
                                                             <a
                                                                 className="no-underline hover:underline text-black text-sm "
-                                                                href={videoUrl || '#'}
+                                                                href={`/video/${slug.current}` || '#'}
                                                             >
                                                                 {title}
                                                             </a>
@@ -156,7 +156,7 @@ function videos({ data }) {
                                                     <h3 className="-mt-1 text-md text-left">
                                                         <a
                                                             className="no-underline hover:underline  text-black text-xs xl:text-sm 2xl:text-lg "
-                                                            href={videoUrl || '#'}
+                                                            href={`/video/${slug.current}` || '#'}
                                                         >
                                                             {title}
                                                         </a>

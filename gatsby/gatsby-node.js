@@ -1,5 +1,44 @@
 import path from 'path';
 
+async function turnEventsIntoVideoDetailPages({ graphql, actions }) {
+  // 1. Get a template for this page
+  const videoTemplate = path.resolve('./src/templates/VideoDetail.tsx');
+  // 2. Query all events
+  const { data } = await graphql(`
+    query {
+      events: allSanityEvent {
+        nodes {
+          title
+          slug {
+            current
+          }
+          videoUrl
+        }
+      }
+    }
+  `);
+
+  // 3. Loop over each video event and create a page for that video
+
+  // Filter for just events that have a video
+  const videoEvents = data.events.nodes.filter(
+    (event) => (event.videoUrl = !null),
+  );
+
+  // Loop through and create the pages
+  videoEvents.forEach((event) => {
+    console.log('creating a video detail page for ', event.title);
+    actions.createPage({
+      // What is the url for this new page
+      path: `video/${event.slug.current}`,
+      component: videoTemplate,
+      context: {
+        slug: event.slug.current,
+      },
+    });
+  });
+}
+
 async function turnPostsIntoPages({ graphql, actions }) {
   // 1. Get a template for this page
   const postTemplate = path.resolve('./src/templates/Post.tsx');
@@ -16,7 +55,6 @@ async function turnPostsIntoPages({ graphql, actions }) {
       }
     }
   `);
-  console.log(data);
   // 3. Loop over each post and create a page for that post
   data.posts.nodes.forEach((post) => {
     console.log('creating a post page for ', post.title);
@@ -37,4 +75,6 @@ export async function createPages(params) {
   await turnPostsIntoPages(params);
   // 2. Pages
   // 3. Podcasts
+  // 4. Videos
+  await turnEventsIntoVideoDetailPages(params);
 }

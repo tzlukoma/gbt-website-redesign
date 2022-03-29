@@ -14,6 +14,11 @@ export default function Nav() {
       link: '/schedule',
     },
     {
+      name: 'Books',
+      link: '/books',
+    },
+
+    {
       name: 'Videos',
       link: '/archive/videos',
     },

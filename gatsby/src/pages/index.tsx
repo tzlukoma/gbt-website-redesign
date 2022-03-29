@@ -79,7 +79,10 @@ function HomePage({ data }) {
                   <h3 className="-mt-1 text-md text-left">
                     <a
                       className="no-underline hover:underline text-black text-lg "
-                      href={mobileAiredEvents[0].node.videoUrl || '#'}
+                      href={
+                        `/video/${mobileAiredEvents[0].node.slug.current}` ||
+                        '#'
+                      }
                     >
                       {mobileAiredEvents[0].node.title}
                     </a>
@@ -209,7 +212,7 @@ function HomePage({ data }) {
                       <h3 className="-mt-1 text-md text-left">
                         <a
                           className="no-underline hover:underline  text-black text-xs xl:text-sm 2xl:text-lg "
-                          href={videoUrl || '#'}
+                          href={`/video/${slug.current}` || '#'}
                         >
                           {title}
                         </a>
