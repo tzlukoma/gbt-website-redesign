@@ -4,8 +4,8 @@ import Img from 'gatsby-image';
 import BlockContent from '@sanity/block-content-to-react'
 
 function AboutPage({ data }) {
-  const image = data.allSanityPost.edges[0].node.mainImage
-  const content = data.allSanityPost.edges[0].node._rawBody
+  const image = data.sanitySiteSettings.aboutImage
+  const content = data.sanitySiteSettings._rawAboutText
 
 
   return (
@@ -29,20 +29,23 @@ function AboutPage({ data }) {
 export default AboutPage;
 
 export const query = graphql`
-query AboutPageQuery {
-  allSanityPost(filter: {slug: {current: {eq: "about-george"}}}) {
-    edges {
-      node {
-        mainImage {
-          asset {
-            fluid(maxWidth: 700) {
-              ...GatsbySanityImageFluid
-            }
+  query AboutPageQuery {
+    sanitySiteSettings {
+      heroImage {
+        asset {
+          fluid(maxWidth: 700) {
+            ...GatsbySanityImageFluid
           }
         }
-        _rawBody(resolveReferences: {maxDepth: 10})
-      }
+      },
+      aboutImage {
+        asset {
+          fluid(maxWidth: 700) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      },
+      _rawAboutText
     }
   }
-}
-`
+`;

@@ -13,6 +13,7 @@ import brand from './documents/brand';
 import book from './documents/book';
 import blockContent from './documents/blockContent';
 import siteSettings from './documents/siteSettings';
+import mainImage from './objects/mainImage';
 
 // Then import schema types from any plugins that might expose them
 
@@ -27,6 +28,7 @@ export default createSchema({
     event,
     podcastEpisode,
     post,
+    mainImage,
     person,
     book,
     platform,

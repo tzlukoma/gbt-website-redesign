@@ -1,4 +1,5 @@
 import path from 'path';
+import { paginate } from 'gatsby-awesome-pagination';
 
 async function turnEventsIntoVideoDetailPages({ graphql, actions }) {
   // 1. Get a template for this page
@@ -69,6 +70,32 @@ async function turnPostsIntoPages({ graphql, actions }) {
   });
 }
 
+async function createBlogArchive({ graphql, actions }) {
+  const { createPage } = actions;
+
+  // const blogPost = path.resolve('./src/templates/Post.tsx')
+  const { data } = await graphql(`
+    query {
+      posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
+        nodes {
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+
+  paginate({
+    createPage,
+    items: data.posts.nodes,
+    itemsPerPage: 3,
+    pathPrefix: '/posts',
+    component: path.resolve('src/templates/PostArchive.tsx'),
+  });
+}
+
 export async function createPages(params) {
   // Create pages dynamically
   // 1. Posts
@@ -77,4 +104,6 @@ export async function createPages(params) {
   // 3. Podcasts
   // 4. Videos
   await turnEventsIntoVideoDetailPages(params);
+  // 5. Blog Post Archive
+  await createBlogArchive(params);
 }
