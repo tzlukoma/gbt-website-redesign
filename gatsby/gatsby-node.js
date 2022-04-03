@@ -90,8 +90,8 @@ async function createBlogArchive({ graphql, actions }) {
   paginate({
     createPage,
     items: data.posts.nodes,
-    itemsPerPage: 3,
-    pathPrefix: '/posts',
+    itemsPerPage: 12,
+    pathPrefix: '/blog',
     component: path.resolve('src/templates/PostArchive.tsx'),
   });
 }
