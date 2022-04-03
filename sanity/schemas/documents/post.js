@@ -31,11 +31,7 @@ export default {
     {
       title: 'Main image',
       name: 'mainImage',
-
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      type: 'mainImage',
     },
     {
       title: 'Categories',
