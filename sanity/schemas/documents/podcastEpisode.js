@@ -2,6 +2,27 @@ import { FaPodcast as icon } from 'react-icons/fa';
 import MyAnchorPodcastString from '../../src/MyAnchorPodcastString';
 import MyVideoString from '../../src/MyVideoString';
 
+const isUniqueRSSLink = (rssLink, context) => {
+  const { document } = context;
+
+  const id = document._id.replace(/^drafts\./, '');
+
+  const params = {
+    draft: `drafts.${id}`,
+    published: id,
+    rssLink,
+  };
+
+  /* groq */
+  const query = groq`!defined(*[
+    _type == 'rssLink' &&
+    !(_id in [$draft, $published]) &&
+    name == $rssLink
+  ][0]._id)`;
+
+  return client.fetch(query, params);
+};
+
 export default {
   title: 'Podcast Episode',
   name: 'podcastEpisode',
@@ -30,6 +51,17 @@ export default {
       title: 'Date',
       name: 'date',
       type: 'datetime',
+    },
+    {
+      title: 'RSS Link',
+      name: 'rssLink',
+      type: 'string',
+      // validation: (Rule) =>
+      //   Rule.custom(async (value, context) => {
+      //     const isUnique = await isUniqueRSSLink(value, context);
+      //     if (!isUnique) return 'RSS Link is not unique';
+      //     return true;
+      //   }),
     },
     {
       title: 'Hosts',

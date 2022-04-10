@@ -96,6 +96,39 @@ async function createBlogArchive({ graphql, actions }) {
   });
 }
 
+async function createPodcastArchive({ graphql, actions }) {
+  const { createPage } = actions;
+
+  const { data } = await graphql(`
+    query {
+      episodes: allFeedS4LPodcast(sort: { fields: isoDate, order: DESC }) {
+        nodes {
+          title
+          itunes {
+            episode
+            duration
+          }
+          pubDate
+          link
+          isoDate(locale: "")
+          contentSnippet
+          enclosure {
+            url
+          }
+        }
+      }
+    }
+  `);
+
+  paginate({
+    createPage,
+    items: data.episodes.nodes,
+    itemsPerPage: 3,
+    pathPrefix: '/podcast',
+    component: path.resolve('src/templates/PodcastArchive.tsx'),
+  });
+}
+
 export async function createPages(params) {
   // Create pages dynamically
   // 1. Posts
@@ -106,4 +139,5 @@ export async function createPages(params) {
   await turnEventsIntoVideoDetailPages(params);
   // 5. Blog Post Archive
   await createBlogArchive(params);
+  await createPodcastArchive(params);
 }
