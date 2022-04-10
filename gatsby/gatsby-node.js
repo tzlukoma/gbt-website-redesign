@@ -86,6 +86,7 @@ async function createBlogArchive({ graphql, actions }) {
       }
     }
   `);
+  console.log(`creating pagination for blog archive pages`);
 
   paginate({
     createPage,
@@ -119,7 +120,7 @@ async function createPodcastArchive({ graphql, actions }) {
       }
     }
   `);
-
+  console.log(`creating pagination for podcast pages`);
   paginate({
     createPage,
     items: data.episodes.nodes,

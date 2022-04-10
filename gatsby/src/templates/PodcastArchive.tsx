@@ -8,7 +8,6 @@ import { displayLocalTimeZone } from "../utils/timeFormats";
 const PodcastArchive = ({ data, pageContext }) => {
     const episodes = data.allFeedS4LPodcast.nodes
     const sanityEpisodes = data.allSanityPodcastEpisode.nodes
-    console.log({ sanityEpisodes })
     return (
         <div className="flex justify-center">
             <div className="m-auto p-8 md:px-8 lg:px-24">
