@@ -3,10 +3,7 @@ import { Link } from 'gatsby';
 
 const Pager = ({ pageContext }) => {
   const { previousPagePath, nextPagePath } = pageContext;
-  console.log({ previousPagePath });
-  console.log({ nextPagePath });
 
-  //   console.log(pageContext);
   return (
     <div className="flex justify-center">
       <div>

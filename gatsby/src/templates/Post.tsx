@@ -5,7 +5,6 @@ import { displayLocalTimeZone } from "../utils/timeFormats"
 
 export default function SinglePostPage({ data }) {
 
-    console.log(data)
     const content = data.post._rawBody
     const categories = data.post.category
     const author = data?.post?.author?.name

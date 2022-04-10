@@ -7,8 +7,6 @@ import { displayLocalTimeZone } from "../utils/timeFormats";
 
 export default function PostArchivePage({ data, pageContext }) {
     const posts = data.allSanityPost.nodes
-    console.log(posts)
-    console.log(pageContext)
 
     return (
         <div className="flex justify-center">
