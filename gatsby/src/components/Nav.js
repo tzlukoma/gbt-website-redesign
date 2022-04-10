@@ -23,6 +23,10 @@ export default function Nav() {
       link: '/archive/videos',
     },
     {
+      name: 'Podcast',
+      link: '/podcast',
+    },
+    {
       name: 'Blog',
       link: '/blog',
     },
