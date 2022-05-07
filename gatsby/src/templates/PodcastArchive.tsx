@@ -5,6 +5,29 @@ import BlockContent from '@sanity/block-content-to-react'
 import Pager from "../components/Pager";
 import { displayLocalTimeZone } from "../utils/timeFormats";
 import TagPill from '../components/TagPill';
+import { AppleBadge } from '../assets/images/AppleBadge';
+import { GoogleBadge } from '../assets/images/GoogleBadge';
+import { SpotifyBadge } from '../assets/images/SpotifyBadge';
+
+
+
+const subscribeBadges = [
+    {
+        title: "apple",
+        src: "https://podcasts.apple.com/us/podcast/set-4-life-conversations-with-george/id1623010784?itsct=podcast_box_link&itscg=30200&ls=1",
+        component: <AppleBadge />
+    },
+    {
+        title: "google",
+        src: "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8xZDlmMzU5MC9wb2RjYXN0L3Jzcw==",
+        component: <GoogleBadge />
+    },
+    {
+        title: "spotify",
+        src: "https://open.spotify.com/show/6qr7sDhxEOFwat7Ibtbbrn",
+        component: <SpotifyBadge />
+    }
+]
 
 interface RssPodcastEpisode {
     title: string;
@@ -35,6 +58,11 @@ const PodcastArchive = ({ data, pageContext }) => {
         <div className="flex justify-center">
             <div className="m-auto p-8 md:px-8 lg:px-24">
                 <h1> Podcast Episodes</h1>
+                <div className="flex mb-5 w-full sm:w-4/5 justify-between">{
+                    subscribeBadges.map(item => {
+                        return <a className="w-1/2 ml-1.5" href={item.src}>{item.component}</a>
+                    })
+                }</div>
                 <div className="max-w-3xl">
                     {
                         episodes.map(episode => {
