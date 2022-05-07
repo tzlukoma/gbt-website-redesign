@@ -2,8 +2,25 @@ import React from 'react'
 import Img from 'gatsby-image';
 import { Link } from "gatsby";
 import { displayLocalTimeZone } from "../utils/timeFormats";
+import TagPill from './TagPill';
 
-const PodcastPreview = ({ post }) => {
+interface Post {
+    title: string;
+    publishedAt: string;
+    slug: { current: string };
+    mainImage: any;
+    category: Tag[]
+    author: { name: string };
+}
+interface Tag {
+    name: string
+}
+
+interface PostPreviewProps {
+    post: Post
+}
+
+const PostPreview = ({ post }: PostPreviewProps) => {
     return (
         <div className="grid gap-1 grid-rows-1 bg-gray-50">
 
@@ -28,11 +45,9 @@ const PodcastPreview = ({ post }) => {
                 </h3>
             </div>
             <div className="flex px-5 mb-2">
-                {post.category.map(item => {
+                {post.category.map((item: Tag) => {
                     return (
-                        <div>
-                            <div className="mr-2 px-2 py-1 bg-gray-200">{item.name.toLowerCase()}</div>
-                        </div>
+                        <TagPill tag={item.name} />
 
                     )
                 })}
@@ -47,4 +62,4 @@ const PodcastPreview = ({ post }) => {
     )
 }
 
-export default PodcastPreview
+export { PostPreview }
