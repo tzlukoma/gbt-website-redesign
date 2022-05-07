@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { Link } from "gatsby";
 import Pager from "../components/Pager";
 import { displayLocalTimeZone } from "../utils/timeFormats";
-import PostPreview from "../components/PostPreview";
+import { PostPreview } from "../components/PostPreview";
 
 export default function PostArchivePage({ data, pageContext }) {
     const posts = data.allSanityPost.nodes

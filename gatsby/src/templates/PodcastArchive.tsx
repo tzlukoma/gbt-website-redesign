@@ -4,15 +4,37 @@ import ReactAudioPlayer from 'react-audio-player';
 import BlockContent from '@sanity/block-content-to-react'
 import Pager from "../components/Pager";
 import { displayLocalTimeZone } from "../utils/timeFormats";
+import TagPill from '../components/TagPill';
+
+interface RssPodcastEpisode {
+    title: string;
+    itunes: {
+        episode: string;
+        duration: number;
+    }
+    pubDate: string;
+    link: string;
+    isoDate: string;
+    content: string;
+    contentSnippet: string;
+    enclosure: {
+        url: string
+    }
+}
+
+interface SanityPodcastEpisode {
+    category: { name: string }[]
+    rssLink: string;
+    _rawSynopsis: any;
+}
 
 const PodcastArchive = ({ data, pageContext }) => {
-    const episodes = data.allFeedS4LPodcast.nodes
-    const sanityEpisodes = data.allSanityPodcastEpisode.nodes
+    const episodes: RssPodcastEpisode[] = data.allFeedS4LPodcast.nodes
+    const sanityEpisodes: SanityPodcastEpisode[] = data.allSanityPodcastEpisode.nodes
     return (
         <div className="flex justify-center">
             <div className="m-auto p-8 md:px-8 lg:px-24">
                 <h1> Podcast Episodes</h1>
-                {/* <h2 className="text-2xl text-primary-500 my-0">{`(page ${pageContext.pageNumber} of ${pageContext.numberOfPages})`}</h2> */}
                 <div className="max-w-3xl">
                     {
                         episodes.map(episode => {
@@ -29,7 +51,17 @@ const PodcastArchive = ({ data, pageContext }) => {
                                                 {`${Math.round(episode.itunes.duration / 60)} mins`}
                                             </h3>
                                         </div>
-                                        {
+                                        <div className="flex my-5">
+                                            {
+                                                summaryContent.length > 0 ? (
+                                                    summaryContent[0].category.map((item) => {
+                                                        return (
+                                                            <TagPill tag={item.name} />
+                                                        )
+                                                    })
+                                                ) : null
+                                            }
+                                        </div>       {
                                             summaryContent.length > 0 ? <BlockContent blocks={summaryContent[0]._rawSynopsis} className="prose lg:prose-xl m-auto" /> : null
                                         }
 
@@ -39,6 +71,8 @@ const PodcastArchive = ({ data, pageContext }) => {
                                             style={{ width: "100%" }}
                                             className="mt-10"
                                         />
+
+
                                     </div>
                                 </div>
                             )
@@ -78,6 +112,9 @@ export const query = graphql`
             }
             allSanityPodcastEpisode {
                     nodes {
+                        category {
+                            name
+                        }
                         rssLink
                         _rawSynopsis
                     }
