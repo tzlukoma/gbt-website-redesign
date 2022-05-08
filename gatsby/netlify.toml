@@ -9,4 +9,4 @@
     status = 200
 
 [functions.getPodcast]
-schedule = "0 9 * * 3"
+schedule = "0 13 * * 4"
