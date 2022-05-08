@@ -6,3 +6,5 @@ gbt-import
 .cache/
 static/
 gatsby/public
+# Local Netlify folder
+.netlify
