@@ -50,6 +50,7 @@
     "netlify-cli": "^3.10.6",
     "netlify-lambda": "^2.0.3",
     "normalize.css": "^8.0.1",
+    "podcast-feed-parser": "^1.0.4",
     "react": "^17.0.1",
     "react-audio-player": "^0.17.0",
     "react-dom": "^17.0.1",

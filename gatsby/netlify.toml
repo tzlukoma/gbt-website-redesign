@@ -7,3 +7,6 @@
     from = "/api/*"
     to = "/.netlify/functions/:splat"
     status = 200
+
+[functions.getPodcast]
+schedule = "0 0 9 ? * THU *"

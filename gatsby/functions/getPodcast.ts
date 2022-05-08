@@ -1,5 +1,6 @@
 const sanityClient = require('@sanity/client')
 const Schema = require('@sanity/schema').default
+const podcastFeedParser = require('podcast-feed-parser')
 const blockTools = require('@sanity/block-tools')
 const blockContent = require('./blockContent')
 
@@ -11,7 +12,7 @@ const client = sanityClient({
     useCdn: true
 })
 
-
+const url = "https://anchor.fm/s/1d9f3590/podcast/rss";
 
 // const defaultSchema = Schema.compile({
 //     name: 'allEpisodes',
@@ -68,10 +69,16 @@ const client = sanityClient({
 
 // const query = '*[_type == "podcastEpisode"]'
 
+const fetchPodcast = async () => {
+    const podcast = await podcastFeedParser.getPodcastFromURL(url)
+    return podcast.episodes[0]
+}
+
 exports.handler = async function (event, context) {
-    const body = await JSON.parse(event.body)
+    // const body = await JSON.parse(event.body)
+    const body = await fetchPodcast()
     // const synopsisBlocks = blockTools.htmlToBlocks(synopsis, blockContentType)
-    const doc = { _type: "podcastEpisode", title: body.EntryTitle, rssLink: body.EntryUrl }
+    const doc = { _type: "podcastEpisode", title: body.title, rssLink: body.link, date: body.pubDate, status: "aired" }
     // const doc = JSON.parse(event.body)
     console.log(doc)
     try {
