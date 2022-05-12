@@ -1,11 +1,14 @@
+import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import { graphql } from 'gatsby';
-import React from 'react'
+import ServiceIcon from '../../components/ServiceIcon';
 
 const ServicePage = ({ data: { sanitySiteSettings: { _rawServiceText } } }) => {
   return (
     <div className="max-w-prose m-auto">
-      <img src="/service.svg" alt="service icon" className="w-1/2 m-auto p-5" />
+      <div className="w-1/2 m-auto p-5" >
+        <ServiceIcon />
+      </div>
       <BlockContent blocks={_rawServiceText} className="prose lg:prose-xl p-5" />
     </div>
   )
