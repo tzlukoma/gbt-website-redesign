@@ -33,7 +33,7 @@ interface RssPodcastEpisode {
     title: string;
     itunes: {
         episode: string;
-        duration: number;
+        duration: string;
     }
     pubDate: string;
     link: string;
@@ -47,6 +47,7 @@ interface RssPodcastEpisode {
 
 interface SanityPodcastEpisode {
     category: { name: string }[]
+    episodeNumber: number;
     rssLink: string;
     _rawSynopsis: any;
 }
@@ -69,16 +70,28 @@ const PodcastArchive = ({ data, pageContext }) => {
                             const summaryContent = sanityEpisodes.filter(sanityEpisode => sanityEpisode.rssLink.toString().toUpperCase() === episode.link.toString().toUpperCase())
                             return (
                                 <div className="p-5 mb-10 bg-light-100 shadow-md">
-                                    <div className="my-10">
+                                    <div className="my-5">
                                         <div >
-                                            <h2 className="text-3xl md:text-4xl m-0">
-                                                {`${episode.itunes.episode == null ? "" : `Episode #${episode.itunes.episode}:`} ${episode.title}`}
+
+                                            <h2 className="grid grid-cols-6 text-3xl md:text-3xl m-1">
+                                                <span className="col-span-2 "><span className="bg-primary-500 py-3 px-5 mr-3 rounded-3xl text-white">{`${episode.itunes.episode == null ? (summaryContent.length > 0 ? summaryContent[0]?.episodeNumber : null) : `Episode #${episode.itunes.episode}`}`}</span></span>
+                                                <span className="col-span-4">{`${episode.title}`}</span>
                                             </h2>
-                                            <h3 className="text-2xl my-0 text-secondary-500">{displayLocalTimeZone(episode.isoDate, 'MMM DD, YYYY')}</h3>
-                                            <h3 className="text-xl mt-0 mb-5">
-                                                {`${Math.round(episode.itunes.duration / 60)} mins`}
+
+                                            <h3 className="flex text-2xl ">
+                                                <span className="my-0 text-secondary-500 mr-3">{displayLocalTimeZone(episode.isoDate, 'MMM DD, YYYY')}</span>
+                                                <span className="mt-0 mb-5">
+                                                    {`Duration: ${episode.itunes.duration}`}
+                                                </span>
                                             </h3>
+
                                         </div>
+                                        <ReactAudioPlayer
+                                            src={episode.enclosure.url}
+                                            controls
+                                            style={{ width: "100%" }}
+                                            className="mt-10"
+                                        />
                                         <div className="flex my-5">
                                             {
                                                 summaryContent.length > 0 ? (
@@ -93,12 +106,6 @@ const PodcastArchive = ({ data, pageContext }) => {
                                             summaryContent.length > 0 ? <BlockContent blocks={summaryContent[0]._rawSynopsis} className="prose lg:prose-xl m-auto" /> : null
                                         }
 
-                                        <ReactAudioPlayer
-                                            src={episode.enclosure.url}
-                                            controls
-                                            style={{ width: "100%" }}
-                                            className="mt-10"
-                                        />
 
 
                                     </div>
@@ -143,6 +150,7 @@ export const query = graphql`
                         category {
                             name
                         }
+                        episodeNumber
                         rssLink
                         _rawSynopsis
                     }
