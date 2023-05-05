@@ -39,7 +39,6 @@ const PostPreview = ({ post }: PostPreviewProps) => {
                 </Link>
             </div>
             <div className=" px-5">
-                <h3 className="text-xl my-0 text-primary-300">{displayLocalTimeZone(post.publishedAt, 'MMM DD, YYYY')}</h3>
                 <h3 className="text-lg mt-0 mb-5">
                     {post.author ? `by ${post.author?.name}` : "Feature"}
                 </h3>
