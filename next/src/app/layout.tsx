@@ -1,5 +1,7 @@
+import Nav from '@/components/Nav';
 import './globals.css';
 import { Lato, Josefin_Sans } from 'next/font/google';
+import Footer from '@/components/Footer';
 
 const josefin_sans = Josefin_Sans({
 	subsets: ['latin'],
@@ -28,8 +30,9 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={`${lato.variable} ${josefin_sans.variable}`}>
 			<body>
+				<Nav />
 				<div className="pt-16">{children}</div>
-				{children}
+				<Footer />
 			</body>
 		</html>
 	);

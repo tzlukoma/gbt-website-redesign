@@ -6,6 +6,7 @@ import { client } from '@/utils/sanity';
 
 interface NextImageProps {
 	sanityImage: any;
+	className?: string;
 	sizes?: string;
 	style?: string;
 	placeholder?: string;
@@ -14,6 +15,7 @@ interface NextImageProps {
 
 const NextImage = ({
 	sanityImage,
+	className,
 	sizes,
 	style,
 	placeholder,
@@ -23,6 +25,7 @@ const NextImage = ({
 	return (
 		<Img
 			{...imageProps}
+			className={className}
 			placeholder={placeholder ? placeholder : null}
 			alt={altText}
 		/>

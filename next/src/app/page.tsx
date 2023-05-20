@@ -7,6 +7,7 @@ import { Event, VideoEvent } from '@/types/Event';
 import EventCard from '@/components/EventCard';
 import { client } from '@/utils/sanity';
 import NextImage from '@/components/NextImage';
+import VideoPlayer from '@/components/VideoPlayer';
 
 async function getEvents() {
 	try {
@@ -80,10 +81,6 @@ export default async function Home() {
 													altText="event image"
 													sanityImage={mobileAiredEvents[0].thumbnail}
 												/>
-												{/* <Image
-                        className="absolute z-0 top-0 left-0 w-full h-full"
-                        fluid={mobileAiredEvents[0].node.thumbnail.asset.fluid}
-                      /> */}
 												<div className="h-full w-full absolute z-10 inset-0  bg-black opacity-40 text-white">
 													<svg
 														xmlns="http://www.w3.org/2000/svg"
@@ -128,14 +125,16 @@ export default async function Home() {
 															?.platformUrl || ''
 													}>
 													{mobileAiredEvents[0]?.publishPlatform
-														?.platformImage ? null : (
-														// <Img
-														//   fluid={
-														//     mobileAiredEvents[0].node.publishPlatform
-														//       .platformImage.asset.fluid
-														//   }
-														//   className="block rounded-full h-8 w-8"
-														// />
+														?.platformImage ? (
+														<NextImage
+															sanityImage={
+																mobileAiredEvents[0]?.publishPlatform
+																	?.platformImage
+															}
+															className="block rounded-full h-8 w-8"
+															altText="publishing platform icon"
+														/>
+													) : (
 														<img
 															alt="Placeholder"
 															className="block rounded-full h-8 w-8"
@@ -161,7 +160,6 @@ export default async function Home() {
 					</div>
 					{scheduledEvents && scheduledEvents?.length < 1 ? null : (
 						<div className="-mt-3 p-5 ">
-							{/* <h2 className="mt-0 text-2xl text-center">What's Next?</h2> */}
 							<div className="flex mb-2">
 								<h2 className="mt-0 mb-1 text-2xl text-center">What's Next</h2>
 								<div className="mt-0 mb-0 px-5 text-base text-uppercase text-secondary-500 underline">
@@ -191,10 +189,10 @@ export default async function Home() {
 							</div>
 						</div>
 						<div className="row-start-1 md:h-full">
-							{/* <Img
-								fluid={siteSettings.heroImage.asset.fluid}
-								className="h-full 2xl:h-5/6 hero-image"
-							/> */}
+							<NextImage
+								sanityImage={siteSettings?.heroImage}
+								className="h-full 2xl:h-5/6 object-cover hero-image"
+							/>
 						</div>
 					</div>
 				</div>
@@ -217,6 +215,7 @@ export default async function Home() {
 									<li key={id}>
 										<article className="overflow-hidden shadow-lg ">
 											<div className="relative h-0 pb-fluid-video">
+												<VideoPlayer videoUrl={videoUrl || ''} />
 												{/* <ReactPlayer
 													className="absolute top-0 left-0 w-full h-full"
 													controls={true}
@@ -249,13 +248,13 @@ export default async function Home() {
 														<a
 															className="flex items-center no-underline hover:underline text-black"
 															href={publishPlatform?.platformUrl || ''}>
-															{publishPlatform?.platformImage ? null : (
-																// <Img
-																// 	fluid={
-																// 		publishPlatform.platformImage.asset.fluid
-																// 	}
-																// 	className="block rounded-full h-8 w-8"
-																// />
+															{publishPlatform?.platformImage ? (
+																<NextImage
+																	sanityImage={publishPlatform.platformImage}
+																	className="block rounded-full object-cover h-8 w-8"
+																	altText="publish platform icon"
+																/>
+															) : (
 																<img
 																	alt="Placeholder"
 																	className="block rounded-full h-8 w-8"
@@ -279,9 +278,8 @@ export default async function Home() {
 							})}
 						</ul>
 					</div>
-					{scheduledEvents && scheduledEvents?.length < 1 ? null : (
+					{!scheduledEvents || scheduledEvents?.length < 1 ? null : (
 						<div className=" md:px-8 lg:px-20">
-							{/* <h2 className="mt-10 mb-2 text-4xl ">What's Next?</h2> */}
 							<div className="flex mt-0 mb-2 ">
 								<h2 className="mt-10 mb-2 text-4xl">What's Next</h2>
 								<div className="mt-12 mb-0 px-5 text-base  text-secondary-500 underline">
