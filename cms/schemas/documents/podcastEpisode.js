@@ -84,7 +84,9 @@ export default {
       title: 'Video Preview',
       name: 'video',
       type: 'string',
-      inputComponent: MyVideoString,
+      components: {
+        input: MyVideoString,
+      },
     },
     {
       title: 'Audio Link',
@@ -95,7 +97,9 @@ export default {
       title: 'Podcast Preview',
       name: 'podcast',
       type: 'string',
-      inputComponent: MyAnchorPodcastString,
+      components: {
+        input: MyAnchorPodcastString,
+      },
     },
     {
       title: 'Synopsis',

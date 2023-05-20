@@ -5,14 +5,14 @@ import ReactPlayer from 'react-player';
 const MyVideoString = React.forwardRef((props, ref) => {
   return (
     <div>
-      {props.parent.videoUrl ? (
+      {props?.parent?.videoUrl ? (
         <ReactPlayer
           className="absolute top-0 left-0 w-full h-full"
           controls={true}
           width="600px"
           height="400px"
           loading="lazy"
-          url={props.parent.videoUrl}
+          url={props?.parent?.videoUrl}
           config={{
             youtube: {
               embedOptions: {

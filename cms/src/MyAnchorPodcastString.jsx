@@ -5,7 +5,7 @@ import { Stack } from '@sanity/ui';
 const MyAnchorPodcastString = React.forwardRef((props, ref) => {
   return (
     <Stack>
-      {props.parent.audioUrl ? (
+      {props?.parent?.audioUrl ? (
         <iframe
           title={props.parent.title}
           src={props.parent.audioUrl}
