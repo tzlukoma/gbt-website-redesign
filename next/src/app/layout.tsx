@@ -27,7 +27,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={`${lato.variable} ${josefin_sans.variable}`}>
-			<body>{children}</body>
+			<body>
+				<div className="pt-16">{children}</div>
+				{children}
+			</body>
 		</html>
 	);
 }

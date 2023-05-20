@@ -2,9 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
 import { displayLocalTimeZone } from '../utils/timeFormats';
-import { client, ALL_EVENTS, SITE_SETTINGS } from '@/utils/groqQueries';
+import { ALL_EVENTS, SITE_SETTINGS } from '@/utils/groqQueries';
 import { Event, VideoEvent } from '@/types/Event';
 import EventCard from '@/components/EventCard';
+import { client } from '@/utils/sanity';
+import NextImage from '@/components/NextImage';
 
 async function getEvents() {
 	try {
@@ -74,6 +76,10 @@ export default async function Home() {
 											href={mobileAiredEvents[0]?.videoUrl || ''}
 											className="absolute top-0 left-0 w-full h-full">
 											<div className="relative">
+												<NextImage
+													altText="event image"
+													sanityImage={mobileAiredEvents[0].thumbnail}
+												/>
 												{/* <Image
                         className="absolute z-0 top-0 left-0 w-full h-full"
                         fluid={mobileAiredEvents[0].node.thumbnail.asset.fluid}
