@@ -37,6 +37,48 @@ function HomePage({ data }) {
 
   return (
     <article>
+      {/* ---Always visible-- START */}
+      <div className="block">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-8 lg:px-20 xl:pt-12 2xl:pt-14 2xl:pb-0 bg-light-500 max-h-full">
+          <div className="row-start-2 md:row-start-1 max-h-70 ">
+            <div className="flex flex-col justify-center px-10 2xl:pt-12 2xl:pb-5 pt-6 xl:h-1/2 bg-light-100 ">
+              <h1 className="text-4xl lg:text-5xl 2xl:text-6xl prose">
+                You only need 21-Days.
+                <br />
+                <blockquote className="prose lg:prose-lg 2xl:prose-xl">
+                  Broke is a state of mind. How you think about and talk about
+                  your money determines your long-term financial well-being.
+                </blockquote>
+              </h1>
+            </div>
+            <div className="mt-5 md:px-6">
+              <p className="md:prose-xl">
+                Join the 21-day fast start where I help you embark on a 21-day
+                journey to financial freedom, guided by biblical principles and
+                practical strategies that will transform your relationship with
+                money.
+              </p>
+              <Link to="https://www.amazon.com/21-Day-Fast-Start-Transforming-Relationship/dp/B0BW2BT1L6">
+                <button className="flex-shrink-0 bg-primary-500 hover:bg-primary-600 border-primary-500 rounded hover:border-primary-600 lg:text-lg border-4 text-white py-1 px-5 lg:px-10">
+                  Order your copy today
+                </button>
+              </Link>
+            </div>
+
+            {/* <div>
+              <SignUpForm title="Sign up and get the first 3 chapters of The Wealth Cycle FREE" />
+            </div> */}
+          </div>
+          <div className="row-start-1 md:h-full">
+            <GatsbyImage
+              image={siteSettings?.heroImage?.asset?.gatsbyImageData}
+              className="h-full 2xl:h-5/6 hero-image sm:object-fit md:object-cover"
+              alt="some image"
+            />
+          </div>
+        </div>
+      </div>
+      {/* --Always visible-- END */}
       {/* --Visible on mobile-- START */}
       <div className="md:hidden">
         <div className="-mt-2 p-5 max-w-6xl mx-auto">
@@ -57,7 +99,7 @@ function HomePage({ data }) {
                   >
                     <div className="relative">
                       <GatsbyImage
-                        className="absolute z-0 top-0 left-0 w-full h-full"
+                        // className="absolute z-0 top-0 left-0 w-full h-full"
                         alt="event thumbnail"
                         image={
                           mobileAiredEvents[0]?.node?.thumbnail?.asset
@@ -158,33 +200,6 @@ function HomePage({ data }) {
         )}
       </div>
       {/* --Visible on mobile-- END */}
-      {/* ---Always visible-- START */}
-      <div className="block">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 -mt-2 p-8 lg:px-20 xl:pt-12 2xl:pt-14 2xl:pb-0 bg-light-500 max-h-full">
-          <div className="row-start-2 md:row-start-1 max-h-70 ">
-            <div className="flex flex-col justify-center px-10 2xl:pt-12 2xl:pb-5 pt-6 xl:h-1/2 bg-light-100 ">
-              <h1 className="text-4xl lg:text-5xl 2xl:text-7xl">
-                Live Life By Design.
-                <br />
-                <span className="text-2xl lg:text-3xl 2xl:text-5xl">
-                  Not By Default.
-                </span>
-              </h1>
-            </div>
-            <div>
-              <SignUpForm title="Sign up and get the first 3 chapters of The Wealth Cycle FREE" />
-            </div>
-          </div>
-          <div className="row-start-1 md:h-full">
-            <GatsbyImage
-              image={siteSettings?.heroImage?.asset?.gatsbyImageData}
-              className="h-full 2xl:h-5/6 hero-image"
-              alt="some image"
-            />
-          </div>
-        </div>
-      </div>
-      {/* --Always visible-- END */}
       {/* ---NOT Visible on mobile devices--- START */}
       <div className="hidden md:block">
         <div className=" md:px-8 lg:px-20">
