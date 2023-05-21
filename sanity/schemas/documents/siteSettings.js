@@ -30,7 +30,6 @@ export default {
     {
       title: 'About George Text',
       name: 'aboutText',
-
       type: 'blockContent',
     },
     {
