@@ -1,4 +1,4 @@
-import { FluidObject } from 'gatsby-image';
+import { } from 'gatsby-plugin-image';
 
 export interface Event {
   node: {
@@ -8,9 +8,7 @@ export interface Event {
       name: string,
       platformUrl,
       platformImage: {
-        asset: {
-          fluid: FluidObject
-        }
+        asset: any
       } | null,
     } | null,
     slug: {
@@ -18,9 +16,7 @@ export interface Event {
     },
     status: string,
     thumbnail: {
-      asset: {
-        fluid: FluidObject
-      }
+      asset: any
     } | null,
     title: string,
     synopsis: [{
