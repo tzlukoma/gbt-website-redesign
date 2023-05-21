@@ -53,10 +53,9 @@ function HomePage({ data }) {
             </div>
             <div className="mt-5 md:px-6">
               <p className="md:prose-xl">
-                Join the 21-day fast start where I help you embark on a 21-day
-                journey to financial freedom, guided by biblical principles and
-                practical strategies that will transform your relationship with
-                money.
+                Gear up for a 21-day exploration of your personalized journey to
+                financial freedom, guided by biblical principles and practical
+                strategies that will transform your relationship with money.
               </p>
               <Link to="https://www.amazon.com/21-Day-Fast-Start-Transforming-Relationship/dp/B0BW2BT1L6">
                 <button className="flex-shrink-0 bg-primary-500 hover:bg-primary-600 border-primary-500 rounded hover:border-primary-600 lg:text-lg border-4 text-white py-1 px-5 lg:px-10">
@@ -70,11 +69,13 @@ function HomePage({ data }) {
             </div> */}
           </div>
           <div className="row-start-1 md:h-full">
-            <GatsbyImage
-              image={siteSettings?.heroImage?.asset?.gatsbyImageData}
-              className="h-full 2xl:h-5/6 hero-image sm:object-fit md:object-cover"
-              alt="some image"
-            />
+            <Link to="https://www.amazon.com/21-Day-Fast-Start-Transforming-Relationship/dp/B0BW2BT1L6">
+              <GatsbyImage
+                image={siteSettings?.heroImage?.asset?.gatsbyImageData}
+                className="h-full 2xl:h-5/6 hero-image sm:object-fit md:object-cover"
+                alt="some image"
+              />
+            </Link>
           </div>
         </div>
       </div>
