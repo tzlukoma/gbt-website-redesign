@@ -33,5 +33,30 @@ export default {
 
       type: 'blockContent',
     },
+    {
+      title: 'Struggling Text',
+      name: 'strugglingText',
+      type: 'blockContent',
+    },
+    {
+      title: 'Steady Text',
+      name: 'steadyText',
+      type: 'blockContent',
+    },
+    {
+      title: 'Solid Text',
+      name: 'solidText',
+      type: 'blockContent',
+    },
+    {
+      title: 'Surplus Text',
+      name: 'surplusText',
+      type: 'blockContent',
+    },
+    {
+      title: 'Service Text',
+      name: 'serviceText',
+      type: 'blockContent',
+    },
   ],
 };
