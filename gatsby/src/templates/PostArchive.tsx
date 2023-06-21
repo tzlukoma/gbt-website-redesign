@@ -26,31 +26,25 @@ export default function PostArchivePage({ data, pageContext }) {
   );
 }
 
-export const query = graphql`
-  query ($skip: Int!, $limit: Int!) {
-    allSanityPost(
-      sort: { fields: publishedAt, order: DESC }
-      skip: $skip
-      limit: $limit
-    ) {
-      nodes {
-        title
-        author {
-          name
-        }
-        slug {
-          current
-        }
-        publishedAt
-        category {
-          name
-        }
-        mainImage {
-          asset {
-            gatsbyImageData(width: 700, placeholder: BLURRED)
-          }
+export const query = graphql`query ($skip: Int!, $limit: Int!) {
+  allSanityPost(sort: {publishedAt: DESC}, skip: $skip, limit: $limit) {
+    nodes {
+      title
+      author {
+        name
+      }
+      slug {
+        current
+      }
+      publishedAt
+      category {
+        name
+      }
+      mainImage {
+        asset {
+          gatsbyImageData(width: 700, placeholder: BLURRED)
         }
       }
     }
   }
-`;
+}`;

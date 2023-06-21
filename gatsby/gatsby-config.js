@@ -11,6 +11,7 @@ module.exports = {
     description: 'Live your life by design.',
     twitter: '@georgebthompson',
   },
+  trailingSlash: `always`,
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',

@@ -115,37 +115,31 @@ const PodcastArchive = ({ data, pageContext }) => {
 
 export default PodcastArchive;
 
-export const query = graphql`
-  query ($skip: Int!, $limit: Int!) {
-    allFeedS4LPodcast(
-      sort: { fields: isoDate, order: DESC }
-      skip: $skip
-      limit: $limit
-    ) {
-      nodes {
-        title
-        itunes {
-          episode
-          duration
-        }
-        pubDate
-        link
-        isoDate(locale: "")
-        content
-        contentSnippet
-        enclosure {
-          url
-        }
+export const query = graphql`query ($skip: Int!, $limit: Int!) {
+  allFeedS4LPodcast(sort: {isoDate: DESC}, skip: $skip, limit: $limit) {
+    nodes {
+      title
+      itunes {
+        episode
+        duration
       }
-    }
-    allSanityPodcastEpisode {
-      nodes {
-        category {
-          name
-        }
-        rssLink
-        _rawSynopsis
+      pubDate
+      link
+      isoDate(locale: "")
+      content
+      contentSnippet
+      enclosure {
+        url
       }
     }
   }
-`;
+  allSanityPodcastEpisode {
+    nodes {
+      category {
+        name
+      }
+      rssLink
+      _rawSynopsis
+    }
+  }
+}`;

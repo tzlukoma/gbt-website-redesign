@@ -74,18 +74,16 @@ async function createBlogArchive({ graphql, actions }) {
   const { createPage } = actions;
 
   // const blogPost = path.resolve('./src/templates/Post.tsx')
-  const { data } = await graphql(`
-    query {
-      posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
-        nodes {
-          title
-          slug {
-            current
-          }
-        }
+  const { data } = await graphql(`{
+  posts: allSanityPost(sort: {publishedAt: DESC}) {
+    nodes {
+      title
+      slug {
+        current
       }
     }
-  `);
+  }
+}`);
   console.log(`creating pagination for blog archive pages`);
 
   paginate({
@@ -100,26 +98,24 @@ async function createBlogArchive({ graphql, actions }) {
 async function createPodcastArchive({ graphql, actions }) {
   const { createPage } = actions;
 
-  const { data } = await graphql(`
-    query {
-      episodes: allFeedS4LPodcast(sort: { fields: isoDate, order: DESC }) {
-        nodes {
-          title
-          itunes {
-            episode
-            duration
-          }
-          pubDate
-          link
-          isoDate(locale: "")
-          contentSnippet
-          enclosure {
-            url
-          }
-        }
+  const { data } = await graphql(`{
+  episodes: allFeedS4LPodcast(sort: {isoDate: DESC}) {
+    nodes {
+      title
+      itunes {
+        episode
+        duration
+      }
+      pubDate
+      link
+      isoDate(locale: "")
+      contentSnippet
+      enclosure {
+        url
       }
     }
-  `);
+  }
+}`);
   console.log(`creating pagination for podcast pages`);
   paginate({
     createPage,
