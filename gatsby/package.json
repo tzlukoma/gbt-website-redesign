@@ -52,7 +52,7 @@
     "react-audio-player": "^0.17.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^6.15.5",
+    "react-hook-form": "^7.45.0",
     "react-is": "^17.0.1",
     "react-player": "^2.9.0",
     "react-query": "^3.13.0",
