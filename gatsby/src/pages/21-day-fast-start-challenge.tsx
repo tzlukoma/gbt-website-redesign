@@ -13,8 +13,8 @@ const FastStartPage = ({ data }) => {
       <div className="p-8 md:px-8 lg:px-20">
         <div className="max-w-2xl m-auto">
           <h1 className="text-5xl text-center">
-            Welcome to the 21-Day Fast Start Challenge: Transform Your Finances
-            in 21 Days!
+            Join the 21-Day Fast Start Challenge and Transform Your Finances in
+            21 Days!
           </h1>
           <BlockContent blocks={content} className="prose lg:prose-xl" />
           <div className="m-auto w-2/3 px-4 my-10">
