@@ -28,6 +28,19 @@ export default {
       },
     },
     {
+      title: '21-Day Fast Start Image',
+      name: 'fastStartImage',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      title: '21-Day Fast Start Text',
+      name: 'fastStartText',
+      type: 'blockContent',
+    },
+    {
       title: 'About George Text',
       name: 'aboutText',
       type: 'blockContent',
